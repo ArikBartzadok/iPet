@@ -18,6 +18,14 @@
 
 This project is open source and available under the [MIT License](LICENSE).
 
+## Initial…
+
+Push an existing repository from the command line:
+
+- git remote add origin https://github.com/ArikBartzadok/iPet.git
+- git branch -M master
+- git push -u origin master
+
 
 <div align="center" style="margin-bottom:30px">
 
