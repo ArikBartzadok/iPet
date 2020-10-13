@@ -47,7 +47,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
               <h1 class="text-white">Crie uma conta!</h1>
-              <h3 class="text-lead text-white">Você está pronto para fazer a diferença no mundo?.</h3>
+              <h3 class="text-lead text-white">Você está pronto para fazer a diferença no mundo?</h3>
             </div>
           </div>
         </div>
@@ -80,13 +80,13 @@
               <div class="text-center text-muted mb-4">
                 <small>Informe seus dados</small>
               </div>
-              <form role="form">
+              <form role="form" method="POST" action="http://localhost/tcc_ipet/_site/controller/signup.php">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Nome" type="text">
+                    <input name="name" class="form-control" placeholder="Nome" type="text" required>
                   </div>
                 </div>                
                 <div class="form-group">
@@ -94,7 +94,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input name="email" class="form-control" placeholder="Email" type="email" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -102,26 +102,48 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="***" type="password">
+                    <input name="password" class="form-control" placeholder="***" type="password" required>
                   </div>
                 </div>
                 <div class="text-muted font-italic"><small>Crie uma senha fortificada: <span class="text-success font-weight-700">com letras e números.</span></small></div>
                 <div class="row my-4">
-                  <div class="col-12">
+                  <div class="col-6">
                     <div class="text-muted font-italic"><small>Entrar como:</small></div>
-                    <base-input label="Example multiple select">
-                      <select class="form-control">
-                        <option>Voluntário</option>
-                        <option>ONG</option>       
-                      </select>
-                    </base-input>
+                    <div class="input-group-prepend">
+                      <base-input label="Example multiple select">
+                        <select name="ranking" class="form-control" required>
+                          <option value="1">Voluntário</option>
+                          <option value="2">ONG</option>       
+                        </select>
+                      </base-input>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="text-muted font-italic"><small>Informe seu CPF ou CNPJ:</small></div>
+                    <div class="input-group-prepend">                      
+
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                        </div>
+                        <input name="document" class="form-control" placeholder="CPF ou CNPJ" type="text" required>
+                      </div>
+                    </div>             
+                  </div>   
+                </div>                 
+                              
+                <div class="row my-4">
+                  <div class="col-12">
+                                                         
                   </div>
                 </div>
+
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                      <label class="custom-control-label" for="customCheckRegister">
+                      <input name="terms" class="custom-control-input" id="customCheck1" type="checkbox">
+                      <label class="custom-control-label" for="customCheckRegister" >
                         <span class="text-muted"><span class="text-danger font-weight-700">* </span>Li e concordo com os termos de <a href="#!">Política e Privacidade</a></span>
                       </label>
                     </div>
@@ -129,7 +151,7 @@
                 </div>
 
                 <div class="text-center">
-                  <button type="button" class="btn btn-info mt-4">Criar conta</button>
+                  <button type="submit" class="btn btn-info mt-4">Criar conta</button>
                 </div>
               </form>
             </div>

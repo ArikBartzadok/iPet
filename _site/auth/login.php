@@ -47,7 +47,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
               <h1 class="text-white">Bem vindo!</h1>
-              <h3 class="text-lead text-white">Você está pronto para fazer a diferença no mundo?</h3>
+              <h3 class="text-lead text-white">Você está pronto para deixar sua marca no mundo?</h3>
             </div>
           </div>
         </div>
@@ -75,18 +75,19 @@
                   <span class="btn-inner--text">Google</span>
                 </a>
               </div>
-            </div>
+            </div>                                         
+
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
                 <small>Digite suas credenciais</small>
               </div>
-              <form role="form">
+              <form role="form" method="POST" action="http://localhost/tcc_ipet/_site/controller/login.php">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input name="email" class="form-control" placeholder="Email" type="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -94,7 +95,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input name="pass" class="form-control" placeholder="Password" type="password">
                   </div>
                 </div>
                 <div class="custom-control custom-control-alternative custom-checkbox">
@@ -104,7 +105,7 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-info my-4">Login</button>
+                  <button type="submit" class="btn btn-info my-4">Login</button>
                 </div>
               </form>
             </div>

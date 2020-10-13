@@ -1,19 +1,18 @@
 <!--
 =========================================================
-* ADM Panel
+* ONG Panel
 =========================================================
 A fazer:
 -
 -
 -
 -->
-<?php
+<?php 
 include_once('../controller/connect.php');
 include_once('../controller/session.php');
-include_once('../controller/math_calcs.php');
 
-if($_SESSION['rank'] != 3) {
-	header('location:http://localhost/tcc_ipet/');
+if($_SESSION['rank'] != 1) {
+	header('location:http://localhost/tcc_ipet');
 }
 ?>
 
@@ -25,7 +24,7 @@ if($_SESSION['rank'] != 3) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="desc">
   <meta name="author" content="iPet">
-  <title>iPet | ADM</title>
+  <title>iPet | User</title>
 
   <!-- Styles -->
   <?php

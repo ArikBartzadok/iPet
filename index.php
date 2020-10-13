@@ -3,6 +3,7 @@
 * Argon Dashboard - v1.2.0
 =========================================================
 * Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Doc. Page: https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html?_ga=2.27162932.841682585.1602192593-1881120461.1601918201
 
 
 * Copyright  Creative Tim (http://www.creative-tim.com)
@@ -13,6 +14,12 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php 
+include_once('_site/controller/connect.php');
+session_name(md5('seg'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +28,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="desc">
   <meta name="author" content="iPet">
-  <title>iPet | Login</title>
+  <title>iPet</title>
 
   <!-- Styles -->
   <?php
@@ -35,7 +42,7 @@
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="http://localhost/tcc_ipet/_site/assets/img/brand/logo.jpg">
+        <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-white.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,7 +52,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="#">
-                <img src="http://localhost/tcc_ipet/_site/assets/img/brand/logo.jpg">
+                <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-blue.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -121,9 +128,9 @@
         <div class="header-body text-center mb-7">        
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <h1 class="text-white">Bem vindo!</h1>
-              <img src="_site/assets/img/brand/logo.jpg">
-              <h3 class="text-lead text-white">Você está pronto para fazer a diferença no mundo?.</h3>
+            <img src="_site/assets/img/brand/ipet-white.png" style="height: 100px; width: auto;">
+              <h1 class="text-white">Bem vindo!</h1>              
+              <h3 class="text-lead text-white">Você está pronto para deixar sua marca no mundo?</h3>
             </div>
           </div>
         </div>        
@@ -139,11 +146,43 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 mx-auto">
-            <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background! The header text is vertically centered using flex utilities that are build into Bootstrap 4.</p>
-            <p>The overlay color can be changed by changing the <code>background-color</code> of the <code>.overlay</code> class in the CSS.</p>
-            <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the media query at the bottom of the CSS snippet.</p>
+          <h2>O que é o iPet?</h2>
+            <p>A projeto <code>iPet</code> constitui-se em uma plataforma para adoção de animais em situação de rua ou abandono e apoio a ONG’s (Organizações Não Governamentais). Integrado, respectivamente, pelos alunos: Danilo Santana Conceição, Diogo Ferreira Dos Santos, Henrique Cipriano Anselmo, João Henrique Cadoni Negri, João Vitor da Silveira Eugênio e Pedro Ferreira Alves.</p>
+            <div class="row justify-content-center">
+              <div class="">
+                            <div class="avatar-group">
+                            <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Danilo Santana Conceição">
+                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/danilo.png">
+                            </a>
+                            <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Diogo Ferreira Dos Santos">
+                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/diogo.png">
+                            </a>
+                            <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Henrique Cipriano Anselmo">
+                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/henrique.png">
+                            </a>
+                            <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="João Henrique Cadoni Negri">
+                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/cadoni.png">
+                            </a>
+                            <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="João Vitor da Silveira Eugênio">
+                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/eugenio.png">
+                            </a>
+                            <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Pedro Ferreira Alves">
+                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/pedro.png">
+                            </a>
+                          </div>
+                </div>
+              </div>
+
+            <p>O projeto se baseia na elaboração um sistema web cujo principal objetivo seja prestar algum tipo de suporte a questões de saúde pública, dentre
+as quais torna-se possível citar a questão de animais em situação de rua; em complemento à tal,
+adicionar funcionalidades que deem auxilio ao processo de adoção e ações
+voluntárias a tais organizações.</p>
+
+            <p>O sistema em questão, deverá possuir em sua forma inicial a
+possibilidade de cadastro de ONG’s, usuários – voluntários – e administradores,
+além da capacidade de cadastrar animais que necessitam de um tutor. </p>
             <p class="mb-0">
-            Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
+            Deixe sua marca no mundo, seja um apoiador do <code>iPet</code>!
             </p>
           </div>
         </div>

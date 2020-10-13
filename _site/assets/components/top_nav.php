@@ -122,7 +122,7 @@
                     <img alt="Image placeholder" src="http://localhost/tcc_ipet/_site/assets/img/theme/avatar.jpg">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">Usuário</span>
+                    <span class="mb-0 text-sm  font-weight-bold"><?= $_SESSION['name']; ?></span>
                   </div>
                 </div>
               </a>
@@ -147,7 +147,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="http://localhost/tcc_ipet/_site/controller/logout.php" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Sair</span>
                 </a>

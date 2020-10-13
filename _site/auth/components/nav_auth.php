@@ -2,7 +2,7 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="http://localhost/tcc_ipet/">
-        <img src="http://localhost/tcc_ipet/_site/assets/img/brand/logo.jpg">
+        <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-white.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="#">
-                <img src="http://localhost/tcc_ipet/_site/assets/img/brand/logo.jpg">
+                <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-blue.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
