@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="https://github.com/ArikBartzadok" target="_blank" data-toggle="tooltip" data-original-title="Confira nosso projeto no Github">
+            <a class="nav-link nav-link-icon" href="https://github.com/ArikBartzadok/iPet" target="_blank" data-toggle="tooltip" data-original-title="Confira nosso projeto no Github">
               <i class="fab fa-github"></i>
               <span class="nav-link-inner--text d-lg-none">Github</span>
             </a>
