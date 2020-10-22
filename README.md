@@ -10,9 +10,14 @@
 
 </div>
 
-## Author
+## Authors
 
+- [Danilo Santana]()
 - [Diogo Ferreira](https://diogodeveloper.netlify.com/)
+- [Henrique Anselmo]()
+- [João Cadoni]()
+- [João Eugênio]()
+- [Pedro Ferreira]()
 
 ## License
 
