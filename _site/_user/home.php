@@ -1,6 +1,6 @@
 <!--
 =========================================================
-* ONG Panel
+* USER Panel
 =========================================================
 A fazer:
 -
@@ -8,11 +8,12 @@ A fazer:
 -
 -->
 <?php 
+include_once('../controller/config.php');
 include_once('../controller/connect.php');
 include_once('../controller/session.php');
 
 if($_SESSION['rank'] != 1) {
-	header('location:http://localhost/tcc_ipet');
+	header('location:' . BASE);
 }
 ?>
 
@@ -36,7 +37,7 @@ if($_SESSION['rank'] != 1) {
 <body>
   <!-- Sidenav -->
   <?php
-    include_once "../assets/components/sidenav.php";
+    include_once "components/sidenav.php";
   ?>
   <!-- End Sidenav -->
 
@@ -44,13 +45,13 @@ if($_SESSION['rank'] != 1) {
   <div class="main-content" id="panel">
     <!-- Topnav -->
     <?php
-      include_once "../assets/components/top_nav.php";
+      include_once "components/top_nav.php";
     ?>
     <!-- End Topnav -->
     
     <!-- Header -->
     <?php
-      include_once "../assets/components/header.php";
+      include_once "components/header.php";
     ?>
     <!-- End Header -->
     
@@ -59,7 +60,7 @@ if($_SESSION['rank'] != 1) {
       
       <!-- Content rows and cols -->
       <?php
-        include_once "../assets/components/init_void.php";
+        include_once "components/init.php";
       ?>
       <!-- Content rows and cols -->
 

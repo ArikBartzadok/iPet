@@ -13,6 +13,9 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+include_once('../controller/config.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -84,7 +87,7 @@
               <div class="text-center text-muted mb-4">
                 <small>Digite suas credenciais</small>
               </div>
-              <form role="form" method="POST" action="http://localhost/tcc_ipet/_site/controller/login.php">
+              <form role="form" method="POST" action="<?= BASE . '_site/controller/login.php'; ?>">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
@@ -118,7 +121,7 @@
               <a href="#" class=""><small>Esqueceu sua senha?</small></a>
             </div>
             <div class="col-6 text-right">
-              <a href="http://localhost/tcc_ipet/_site/auth/signup.php" class=""><small>Criar uma conta</small></a>
+              <a href="<?= BASE . '_site/auth/signup.php'; ?>" class=""><small>Criar uma conta</small></a>
             </div>
           </div>
         </div>

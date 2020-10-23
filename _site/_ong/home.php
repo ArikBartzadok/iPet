@@ -8,11 +8,12 @@ A fazer:
 -
 -->
 <?php 
+include_once('../controller/config.php');
 include_once('../controller/connect.php');
 include_once('../controller/session.php');
 
 if($_SESSION['rank'] != 2) {
-	header('location:http://localhost/tcc_ipet');
+	header('location:' . BASE);
 }
 ?>
 

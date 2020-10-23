@@ -15,6 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php 
+include_once('_site/controller/config.php');
 include_once('_site/controller/connect.php');
 session_name(md5('seg'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
@@ -42,7 +43,7 @@ session_start();
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-white.png">
+        <img src="<?= PUBLICO . 'img/brand/ipet-white.png';?>">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -52,7 +53,7 @@ session_start();
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="#">
-                <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-blue.png">
+                <img src="<?= PUBLICO . 'img/brand/ipet-blue.png';?>">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -129,7 +130,7 @@ session_start();
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
             <img src="_site/assets/img/brand/ipet-white.png" style="height: 100px; width: auto;">
-              <h1 class="text-white">Bem vindo!</h1>              
+              <h1 class="text-white">Bem vindo!</h1>    
               <h3 class="text-lead text-white">Você está pronto para deixar sua marca no mundo?</h3>
             </div>
           </div>
@@ -152,22 +153,22 @@ session_start();
               <div class="">
                             <div class="avatar-group">
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Danilo Santana Conceição">
-                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/danilo.png">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/danilo.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Diogo Ferreira Dos Santos">
-                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/diogo.png">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/diogo.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Henrique Cipriano Anselmo">
-                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/henrique.png">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/henrique.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="João Henrique Cadoni Negri">
-                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/cadoni.png">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/cadoni.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="João Vitor da Silveira Eugênio">
-                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/eugenio.png">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/eugenio.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Pedro Ferreira Alves">
-                              <img alt="Espaço reservado para imagem" src="_site/assets/img/theme/pedro.png">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/pedro.png'; ?>">
                             </a>
                           </div>
                 </div>
@@ -204,13 +205,13 @@ além da capacidade de cadastrar animais que necessitam de um tutor. </p>
         <div class="col-xl-6">
           <ul class="nav nav-footer justify-content-center justify-content-xl-end">
             <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Etec</a>
+              <a href="https://etecmogiguacu.com.br" class="nav-link" target="_blank">Etec</a>
             </li>
             <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Saiba +</a>
+              <a href="#" class="nav-link" target="_blank">Saiba +</a>
             </li>
             <li class="nav-item">
-              <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Contato</a>
+              <a href="#" class="nav-link" target="_blank">Contato</a>
             </li>
             <li class="nav-item">
               <a href="https://opensource.org/licenses/MIT" class="nav-link" target="_blank">MIT License</a>

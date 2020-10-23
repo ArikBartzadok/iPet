@@ -13,6 +13,9 @@
 =========================================================
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+include_once('../controller/config.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -83,7 +86,7 @@
               <div class="text-center text-muted mb-4">
                 <small>Informe seus dados</small>
               </div>
-              <form role="form" method="POST" action="http://localhost/tcc_ipet/_site/controller/signup.php">
+              <form role="form" method="POST" action="<?= BASE . '_site/controller/signup.php';?>">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
