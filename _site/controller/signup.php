@@ -8,11 +8,11 @@ $pass = md5(filter_input(INPUT_POST, "password"));
 $ranking = filter_input(INPUT_POST, "ranking"); //to int
 $document = filter_input(INPUT_POST, "document");
 //$use_terms = filter_input(INPUT_POST, "terms");
+$use_terms = 1;
 
 // 1 -> true; 0 -> false;
 $image = "avatar.png";
 $banner = "banner1.jpeg";
-$use_terms = 1;
 $status = 1;
 
 //transformando o valor de string para int
@@ -29,11 +29,11 @@ $array = mysqli_num_rows($res);
 
 //Inserindo os dado no banco, de acordo com o resultado obtido da busca anterior
 if($array == 0) {
-	$sql = "INSERT INTO user (ranking, name, email, password, cpf, image, banner, use_terms, status) VALUES ('$ranking', '$name', '$email', '$pass', '$document', '$image', '$banner', '$use_terms', '$status')";
-	$res = mysqli_query($con, $sql);
-	$array = mysqli_affected_rows($con);
+	$sql1 = "INSERT INTO user (ranking, name, email, password, cpf, image, banner, use_terms, status) VALUES ('$ranking', '$name', '$email', '$pass', '$document', '$image', '$banner', '$use_terms', '$status')";
+	$res1 = mysqli_query($con, $sql1);
+	$array1 = mysqli_affected_rows($con);
 
-	if($array != 0) {
+	if($array1 != 0) {		
 		//criando uma nova sessão
 		session_name(md5('seg'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 		session_start();
@@ -49,6 +49,7 @@ if($array == 0) {
 			$name = $array2['name'];
 			$rank = $array2['ranking'];
 			$image = $array2['image'];
+			$document = $array2['cpf'];
 		} while($array2 = mysqli_fetch_assoc($res2));
 
 		//definindo os valores de minhas sessions
@@ -57,7 +58,19 @@ if($array == 0) {
    	$_SESSION['pass'] = $pass;
    	$_SESSION['name'] = $name;
 		$_SESSION['rank'] = $rank;	
-		$_SESSION['profile_image'] = $image;			
+		$_SESSION['document'] = $document;
+		$_SESSION['profile_image'] = $image;	
+
+		//Gerando o Log
+	$log_desc = "Cadastrou-se no sistema";
+	$log_action = "signup";
+
+	$data = new DateTime();
+	$log_created = $data->format('d-m-Y H:i:s');
+
+	$log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
+	$exec = mysqli_query($con, $log);	
+	$response = mysqli_num_rows($exec);	
 		
 		//fazer o if de redirecionamento
 		if($rank == 3){
@@ -85,7 +98,7 @@ if($array == 0) {
 	}
 }
 else {
-	echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/tcc_ipet/_site/auth/signup.php'>"
+	echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=" . BASE . "_site/auth/signup.php'>"
 	    . "<script type='text/javascript'>alert('Email já cadastrado');</script>";
 }
 ?>

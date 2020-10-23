@@ -1,4 +1,5 @@
 <?php
+include ('config.php');
 include ('connect.php');
 session_name(md5('seg'.$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']));
 session_start();
@@ -20,6 +21,7 @@ if($array != 0) {
 		$name = $array['name'];
 		$rank = $array['ranking'];
 		$image = $array['image'];
+		$document = $array['cpf'];
 	} while($array = mysqli_fetch_assoc($res));
 
 	//definindo os valores de minhas 
@@ -28,25 +30,39 @@ if($array != 0) {
    	$_SESSION['pass'] = $pass;
    	$_SESSION['name'] = $name;
 		$_SESSION['rank'] = $rank;
+		$_SESSION['document'] = $document;
 		$_SESSION['profile_image'] = $image;
+
+	//Gerando o Log
+	$log_desc = "Entrou no sistema";
+	$log_action = "login";
+
+	$data = new DateTime();
+	$log_created = $data->format('d-m-Y H:i:s');
+
+	$log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
+	$exec = mysqli_query($con, $log);		
 		 
 		//$_SESSION['key'] = 1;
 
 		 //fazer o if de redirecionamento
 		 if($rank == 3){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_adm/home.php'>";
+			//echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_adm/home.php'>";
+			header('location:' . BASE . '_site/_adm/home.php');
 		 }
 
 		 if($rank == 2){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_ong/home.php'>";
+			//echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_ong/home.php'>";
+			header('location:' . BASE . '_site/_ong/home.php');
 		 }
 
 		 if($rank == 1){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_user/home.php'>";
+			//echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_user/home.php'>";
+			header('location:' . BASE . '_site/_user/home.php');
 		 }
 
 		 if($rank < 1 || $rank > 3){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/auth/auth_error.php'>";
+			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/auth/auth_error.php'>";
 		 }
 }
 else {
@@ -59,6 +75,6 @@ else {
   unset($_SESSION['name']);
 	unset($_SESSION['rank']);
 		 
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/auth/login.php'>";
+	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE ."_site/auth/login.php'>";
 }
 ?>

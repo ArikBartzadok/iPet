@@ -108,7 +108,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="http://localhost/tcc_ipet/_site/_adm/home.php" target="" class="btn btn-neutral btn-icon">
+            <a href="#" target="" class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon">
                 <i class="fas fa-shopping-cart mr-2"></i>
               </span>
@@ -153,22 +153,22 @@ session_start();
               <div class="">
                             <div class="avatar-group">
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Danilo Santana Conceição">
-                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/danilo.png'; ?>">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/users/danilo.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Diogo Ferreira Dos Santos">
-                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/diogo.png'; ?>">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/users/diogo.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Henrique Cipriano Anselmo">
-                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/henrique.png'; ?>">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/users/henrique.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="João Henrique Cadoni Negri">
-                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/cadoni.png'; ?>">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/users/cadoni.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="João Vitor da Silveira Eugênio">
-                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/eugenio.png'; ?>">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/users/eugenio.png'; ?>">
                             </a>
                             <a href="#" class="avatar avatar-lg rounded-circle" data-toggle="tooltip" data-original-title="Pedro Ferreira Alves">
-                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/theme/pedro.png'; ?>">
+                              <img alt="Espaço reservado para imagem" src="<?= PUBLICO . 'img/users/pedro.png'; ?>">
                             </a>
                           </div>
                 </div>
@@ -199,7 +199,7 @@ além da capacidade de cadastrar animais que necessitam de um tutor. </p>
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
           <div class="copyright text-center  text-lg-left  text-muted">
-              &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">iPet</a>
+              &copy; 2020 <a href="<?= BASE; ?>" class="font-weight-bold ml-1" target="_blank">iPet</a>
           </div>
         </div>
         <div class="col-xl-6">

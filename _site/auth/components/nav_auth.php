@@ -1,8 +1,8 @@
 <!-- Navbar -->
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="http://localhost/tcc_ipet/">
-        <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-white.png">
+      <a class="navbar-brand" href="<?= BASE; ?>">
+        <img src="<?= PUBLICO . 'img/brand/ipet-white.png'; ?>">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,8 +11,8 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="#">
-                <img src="http://localhost/tcc_ipet/_site/assets/img/brand/ipet-blue.png">
+              <a href="<?= BASE; ?>">
+                <img src="<?= PUBLICO . 'img/brand/ipet-blue.png'; ?>">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -67,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="http://localhost/tcc_ipet/_site/_adm/home.php" target="_blank" class="btn btn-neutral btn-icon">
+            <a href="#" target="_blank" class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon">
                 <i class="fas fa-shopping-cart mr-2"></i>
               </span>
