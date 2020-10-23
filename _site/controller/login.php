@@ -16,15 +16,19 @@ if($array != 0) {
 	$array = mysqli_fetch_assoc($res); 
 
 	do{
+		$id = $array['id_user'];
 		$name = $array['name'];
 		$rank = $array['ranking'];
+		$image = $array['image'];
 	} while($array = mysqli_fetch_assoc($res));
 
-	//definindo os valores de minhas sessions
+	//definindo os valores de minhas 
+		$_SESSION['user_id'] = $id;
 		$_SESSION['email'] = $email;
    	$_SESSION['pass'] = $pass;
    	$_SESSION['name'] = $name;
 		$_SESSION['rank'] = $rank;
+		$_SESSION['profile_image'] = $image;
 		 
 		//$_SESSION['key'] = 1;
 

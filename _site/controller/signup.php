@@ -1,5 +1,6 @@
 <?php
 include_once ('connect.php');
+include_once ('config.php');
 
 $name = filter_input(INPUT_POST, "name");
 $email = filter_input(INPUT_POST, "email");
@@ -9,8 +10,10 @@ $document = filter_input(INPUT_POST, "document");
 //$use_terms = filter_input(INPUT_POST, "terms");
 
 // 1 -> true; 0 -> false;
+$image = "avatar.png";
+$banner = "banner1.jpeg";
 $use_terms = 1;
-$telephone = '0';
+$status = 1;
 
 //transformando o valor de string para int
 if($ranking == "1"){
@@ -26,7 +29,7 @@ $array = mysqli_num_rows($res);
 
 //Inserindo os dado no banco, de acordo com o resultado obtido da busca anterior
 if($array == 0) {
-	$sql = "INSERT INTO user (ranking, name, email, password, cpf, telephone, use_terms) VALUES ('$ranking', '$name', '$email', '$pass', '$document', '$telephone', '$use_terms')";
+	$sql = "INSERT INTO user (ranking, name, email, password, cpf, image, banner, use_terms, status) VALUES ('$ranking', '$name', '$email', '$pass', '$document', '$image', '$banner', '$use_terms', '$status')";
 	$res = mysqli_query($con, $sql);
 	$array = mysqli_affected_rows($con);
 
@@ -42,36 +45,43 @@ if($array == 0) {
 		$array2 = mysqli_fetch_assoc($res2); 
 
 		do{
+			$id = $array2['id_user'];
 			$name = $array2['name'];
 			$rank = $array2['ranking'];
+			$image = $array2['image'];
 		} while($array2 = mysqli_fetch_assoc($res2));
 
 		//definindo os valores de minhas sessions
+		$_SESSION['user_id'] = $id;
 		$_SESSION['email'] = $email;
    	$_SESSION['pass'] = $pass;
    	$_SESSION['name'] = $name;
-		$_SESSION['rank'] = $rank;				
+		$_SESSION['rank'] = $rank;	
+		$_SESSION['profile_image'] = $image;			
 		
 		//fazer o if de redirecionamento
 		if($rank == 3){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_adm/home.php'>";
+			//echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_adm/home.php'>";
+			header('location:' . BASE . '_site/_adm/home.php');
 		 }
 
 		 if($rank == 2){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_ong/home.php'>";
+			//echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_ong/home.php'>";
+			header('location:' . BASE . '_site/_ong/home.php');
 		 }
 
 		 if($rank == 1){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_user/home.php'>";
+			//echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/_user/home.php'>";
+			header('location:' . BASE . '_site/_user/home.php');
 		 }
 
 		 if($rank < 1 || $rank > 2){
-			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/tcc_ipet/_site/auth/auth_error.php'>";			
+			echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/auth/auth_error.php'>";			
 		 }
 	}
 	else {
-		echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/tcc_ipet/_site/auth/signup.php'>"
-	    . "<script type='text/javascript'>alert('Usuário não cadastrado');</script>";
+		echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=" . BASE . "_site/auth/signup.php'>"
+	    . "<script type='text/javascript'>alert('Oops... usuário não cadastrado');</script>";
 	}
 }
 else {

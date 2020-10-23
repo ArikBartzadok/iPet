@@ -3,8 +3,11 @@
 	session_start();
 
 	unset($_SESSION['email']);
+	unset($_SESSION['name']);
+	unset($_SESSION['rank']);
 	unset($_SESSION['pass']);
 	unset($_SESSION['key']);
+	unset($_SESSION['user_id']);
 	
 	$_SESSION = array();
 
