@@ -47,7 +47,7 @@
             
             		  //Transforma o $resultado em um array
                   $array_notify = mysqli_fetch_assoc($res_notify);                     
-
+                  
                 ?>
                 <!-- Dropdown header -->
                 <div class="px-3 py-3">
@@ -106,7 +106,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default  dropdown-menu-right ">
                 <div class="row shortcuts px-4">
-                  <a href="<?= BASE . '_site/_user/list/list_log.php'; ?>" class="col-4 shortcut-item">
+                  <a href="<?= BASE . '_site/_user/list/list_log.php?page=0'; ?>" class="col-4 shortcut-item">
                     <span class="shortcut-media avatar rounded-circle bg-gradient-info">
                       <i class="ni ni-bullet-list-67"></i>
                     </span>
@@ -136,7 +136,7 @@
                   <i class="ni ni-single-02"></i>
                   <span>Meu perfil</span>
                 </a>
-                <a href="#!" class="dropdown-item">
+                <a href="<?= BASE . '_site/_user/edit/edit_config.php'; ?>" class="dropdown-item">
                   <i class="ni ni-settings-gear-65"></i>
                   <span>Configurações</span>
                 </a>                

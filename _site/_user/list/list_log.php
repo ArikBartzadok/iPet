@@ -95,16 +95,32 @@ if($_SESSION['rank'] != 1) {
               <div class="table-responsive">
                 <div>                                    
                 <?php
+                  //Paginação de resultados
+                  $num_page_itens = 10;
+
+                  //pegando a página atual
+                  $page = intval($_GET['page']);
+
                   //Fazendo uma busca por todos os logs deste usuário
                   $id = $_SESSION['user_id'];
-
-                  $sql = "SELECT * FROM log WHERE user_id = '$id' ORDER BY id_log DESC";
-                  $res = mysqli_query($con, $sql);
+                  
+                  $sql_log = "SELECT * FROM log WHERE user_id = '$id' ORDER BY id_log DESC LIMIT $page, $num_page_itens";
+                  $res_log = mysqli_query($con, $sql_log);
             
             		  //Transforma o $resultado em um array
-                  $array = mysqli_fetch_assoc($res); 
+                  $array_log = mysqli_fetch_assoc($res_log); 
+                  
+                  //Quantidade de linhas afetadas
+                  //Quantidade total de itens - SELECT count(*) FROM produtos
+                  $num = mysqli_num_rows($res_log);                 
 
-                  $profile_image =  $_SESSION['profile_image'];  
+                  //Definindo a quantidade de páginas e arredondando para o inteiro mais próximo, com a função ceils
+                  $num_pages = ceil($num/$num_page_itens);
+
+                  echo $num;
+
+                  $profile_image =  $_SESSION['profile_image']; 
+                                    
 
                 ?>
                   <table class="table align-items-center">
@@ -127,28 +143,28 @@ if($_SESSION['rank'] != 1) {
                       <th scope="row">
                         <div class="media align-items-center">
                           <div class="avatar-group">
-                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?= $array['user_name']; ?>">
+                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?= $array_log['user_name']; ?>">
                               <img alt="Image placeholder" src="<?= PUBLICO . 'img/users/' . $profile_image; ?>">
                             </a>                      
                           </div>    
                           <div class="media-body">
-                            <span class="name mb-0 text-sm"><?= $array['user_name']; ?></span>
+                            <span class="name mb-0 text-sm"><?= $array_log['user_name']; ?></span>
                           </div>
                         </div>
                       </th>
                       <td class="budget">
-                      <?= $array['action']; ?>
+                      <?= $array_log['action']; ?>
                       </td>
                       <td>
-                      <?= $array['description']; ?>
+                      <?= $array_log['description']; ?>
                       </td>
                       <td>                        
-                      <?= $array['created_at']; ?>
+                      <?= $array_log['created_at']; ?>
                       </td>
                       <td>
                         <span class="badge badge-dot mr-4">
                           <i class="bg-info"></i>
-                          <span class="status"><?= $array['id_log']; ?></span>
+                          <span class="status"><?= $array_log['id_log']; ?></span>
                         </span>
                       </td>
                       <!-- <td class="text-right">
@@ -166,12 +182,39 @@ if($_SESSION['rank'] != 1) {
                     </tr>  
                     <?php
                     //fim do loop
-                    } while($array = mysqli_fetch_assoc($res));
+                    } while($array_log = mysqli_fetch_assoc($res_log));
                     ?>              
                     </tbody>
                   </table>
                 </div>    
               </div>
+              <nav aria-label="...">
+                    <ul class="pagination">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="list_log.php?page=0" tabindex="-1">
+                          <i class="fa fa-angle-left"></i>
+                          <span class="sr-only">Anterior</span>
+                        </a>
+                      </li>
+                      <?php 
+                        for($i=0;$i<$num_pages;$i++){
+                        
+                          $current = "";
+
+                          if($page == $i){
+                            $current = "active";
+                          }
+                      ?>
+                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_log.php?page=<?= $i; ?>"><?= $i+1; ?></a></li>
+                      <?php }?>
+                      <li class="page-item">
+                        <a class="page-link" href="list_log.php?page=<?= $num_pages-1; ?>">
+                          <i class="fa fa-angle-right"></i>
+                          <span class="sr-only">Próximo</span>
+                        </a>
+                      </li>
+                    </ul>
+              </nav>
             </div>
           </div>
         </div>
