@@ -113,7 +113,7 @@ if($_SESSION['rank'] != 1) {
                         <th scope="col" class="sort" data-sort="name">Nome</th>
                         <th scope="col" class="sort" data-sort="budget">Ação</th>
                         <th scope="col" class="sort" data-sort="status">Descrição</th>                        
-                        <th scope="col" class="sort" data-sort="completion">Data</th>
+                        <th scope="col" class="sort" data-sort="completion">Data | Hora</th>
                         <th scope="col">ID</th>
                         <!-- <th scope="col"></th> -->
                       </tr>
@@ -127,7 +127,7 @@ if($_SESSION['rank'] != 1) {
                       <th scope="row">
                         <div class="media align-items-center">
                           <div class="avatar-group">
-                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?= $name; ?>">
+                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?= $array['user_name']; ?>">
                               <img alt="Image placeholder" src="<?= PUBLICO . 'img/users/' . $profile_image; ?>">
                             </a>                      
                           </div>    
@@ -147,7 +147,7 @@ if($_SESSION['rank'] != 1) {
                       </td>
                       <td>
                         <span class="badge badge-dot mr-4">
-                          <i class="bg-warning"></i>
+                          <i class="bg-info"></i>
                           <span class="status"><?= $array['id_log']; ?></span>
                         </span>
                       </td>
