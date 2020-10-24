@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 24/10/2020 às 00:58
+-- Tempo de geração: 24/10/2020 às 05:49
 -- Versão do servidor: 10.4.11-MariaDB
 -- Versão do PHP: 7.4.5
 
@@ -61,7 +61,41 @@ INSERT INTO `log` (`id_log`, `description`, `action`, `user_id`, `user_name`, `u
 (17, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 19:38:54'),
 (18, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 19:38:54'),
 (19, 'Saiu do sistema', 'logout', 21, 'Sata Sata', '44324268886', '23-10-2020 19:44:46'),
-(20, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 19:56:40');
+(20, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 19:56:40'),
+(21, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 20:32:26'),
+(22, 'Alterou seus dados pessoais', 'update', 21, 'Sata Sata', '44324268886', '23-10-2020 20:56:29'),
+(23, 'Alterou seus dados pessoais', 'update', 21, 'Sata Sata', '44324268886', '23-10-2020 20:58:24'),
+(24, 'Alterou seus dados pessoais', 'update', 21, 'Sata Sata', '44324268886', '23-10-2020 20:59:41'),
+(25, 'Saiu do sistema', 'logout', 21, 'Sata Sata', '44324268886', '23-10-2020 21:00:42'),
+(26, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 21:00:57'),
+(27, 'Alterou seus dados pessoais', 'update', 21, 'Sata Sata', '44324268886', '23-10-2020 21:01:13'),
+(28, 'Saiu do sistema', 'logout', 21, 'Sata Sata', '44324268886', '23-10-2020 23:30:16'),
+(29, 'Entrou no sistema', 'login', 21, 'Sata Sata', '44324268886', '23-10-2020 23:31:06');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `notify`
+--
+
+CREATE TABLE `notify` (
+  `id_not` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `name_user` varchar(100) NOT NULL,
+  `image_user` varchar(100) NOT NULL,
+  `type` varchar(2) NOT NULL,
+  `title` text NOT NULL,
+  `text` text NOT NULL,
+  `created_at` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Despejando dados para a tabela `notify`
+--
+
+INSERT INTO `notify` (`id_not`, `id_user`, `name_user`, `image_user`, `type`, `title`, `text`, `created_at`) VALUES
+(1, 21, 'Diogo Ferreira', 'diogo.png', '4', 'Não compartilhe suas credenciais', 'Lorem ipsum dolor sit amet', 'xxx'),
+(2, 1, 'Pedro Ferreira', 'pedro.png', '1', 'A plataforma está operando normalmente', 'Lorem ipsum dolor sit amet', 'xxx');
 
 -- --------------------------------------------------------
 
@@ -96,29 +130,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `ranking`, `name`, `email`, `password`, `cpf`, `telephone`, `instagram`, `street`, `neighborhood`, `city`, `uf`, `bio`, `image`, `banner`, `use_terms`, `status`) VALUES
 (1, 3, 'Diogo Ferreira', 'diogo.santos134@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '44324268886', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
 (2, 1, 'João Eugênio', 'joao.eugenio@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(3, 0, 'Pedro Ferreira', 'pedro.ferreira@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(4, 1, 'Danilo Santana', 'danilo.santana@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(5, 2, 'Henrique Anselmo', 'henrique.anselmo@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(6, 1, 'João Cadoni', 'joao.cadoni@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(7, 1, 'Pedro Amalfi', 'pedro.amalfi@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(8, 2, 'Barbosa', 'barbosa@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(9, 2, 'Barbosa2', 'barbosa2@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(10, 2, 'Barbosa3', 'barbosa3@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(11, 2, 'Teste teste', 'aaa@aaa.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(12, 3, 'aaa', 'adm@adm.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(13, 1, 'POCs da noite', 'njoao6016@gmail.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(14, 1, 'João Eugênio', 'bbb@bbb.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(15, 1, 'Teste teste', 'eee@eee.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(16, 1, 'Diogo Ferreira', 'ccc@ccc.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(17, 1, 'vvv', 'vvv@vvv.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(18, 1, 'Teste teste', 'diogo1936@hotmail.com', '202cb962ac59075b964b07152d234b70', '44324268886', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(19, 1, 'aaa', 'fim@fim.com', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(20, 1, 'aaa', 'aaa@aaa.nnn', '74b87337454200d4d33f80c4663dc5e5', '11111', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
-(21, 1, 'Sata Sata', 'sata@sata.com', '202cb962ac59075b964b07152d234b70', '44324268886', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 'diogo.png', 'banner2.jpg', 1, 0),
-(23, 1, 'new', 'new@new.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'avatar.png', 'banner1.jpeg', 1, 1),
-(27, 1, 'Teste teste', '999@999.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'avatar.png', 'banner1.jpeg', 1, 1),
-(29, 1, 'yyy', 'yyy@gmail.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'avatar.png', 'banner1.jpeg', 1, 1),
-(31, 1, 'Zeta Bot', 'zeta@gmail.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'avatar.png', 'banner1.jpeg', 1, 1);
+(3, 1, 'Pedro Ferreira', 'pedro.ferreira@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
+(21, 1, 'User', 'sata@sata.com', '202cb962ac59075b964b07152d234b70', '44324268886', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n', 'eugenio.png', 'banner1.jpeg', 1, 0);
 
 --
 -- Índices de tabelas apagadas
@@ -129,6 +142,12 @@ INSERT INTO `user` (`id_user`, `ranking`, `name`, `email`, `password`, `cpf`, `t
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`id_log`);
+
+--
+-- Índices de tabela `notify`
+--
+ALTER TABLE `notify`
+  ADD PRIMARY KEY (`id_not`);
 
 --
 -- Índices de tabela `user`
@@ -144,7 +163,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT de tabela `notify`
+--
+ALTER TABLE `notify`
+  MODIFY `id_not` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `user`

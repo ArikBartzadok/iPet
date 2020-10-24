@@ -20,6 +20,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
+                <i class="ni ni-tag text-info"></i>
+                <span class="nav-link-text">Pet's</span>
+              </a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
                 <i class="ni ni-badge text-primary"></i>
                 <span class="nav-link-text">ONG's</span>
               </a>
@@ -29,7 +35,7 @@
                 <i class="ni ni-single-02 text-yellow"></i>
                 <span class="nav-link-text">Usuários</span>
               </a>
-            </li>
+            </li>                                  
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
                 <i class="ni ni-favourite-28 text-danger"></i>

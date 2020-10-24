@@ -37,35 +37,67 @@
                 <i class="ni ni-bell-55"></i>
               </a>
               <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+              <?php
+                  //Fazendo uma busca por todos as notificações deste usuário                  
+                  $sql_notify = "SELECT * FROM notify ORDER BY id_not DESC";
+                  $res_notify = mysqli_query($con, $sql_notify);
+
+                  //Quantidade de notificações
+                  $qtd_notify = mysqli_num_rows($res_notify);
+            
+            		  //Transforma o $resultado em um array
+                  $array_notify = mysqli_fetch_assoc($res_notify);                     
+
+                ?>
                 <!-- Dropdown header -->
                 <div class="px-3 py-3">
-                  <h6 class="text-sm text-muted m-0">Você tem <strong class="text-primary">13</strong> notificações.</h6>
+                  <h6 class="text-sm text-muted m-0">Você tem <strong class="text-primary"><?= $qtd_notify; ?></strong> notificações.</h6>
                 </div>
                 <!-- List group -->
                 <div class="list-group list-group-flush">
+                  <?php
+                    //Início do loop
+                    do{
+                  ?>              
                   <a href="#!" class="list-group-item list-group-item-action">
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="<?= PUBLICO . 'img/users/pedro.png'; ?>" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="<?= PUBLICO . 'img/users/' . $array_notify['image_user']; ?>" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
                           <div>
-                            <h4 class="mb-0 text-sm">Usuário</h4>
+                            <h4 class="mb-0 text-sm"><?= $array_notify['name_user']; ?></h4>
                           </div>
                           <div class="text-right text-muted">
-                            <small>2h atrás</small>
+                            <small>
+                            <?php
+                              if ($array_notify['type'] == 1){
+                                echo "<span class='badge badge-pill badge-primary'>Info</span>";
+                              } elseif ($array_notify['type'] == 2) {
+                                echo "<span class='badge badge-pill badge-success'>Sucesso</span>";
+                              } elseif ($array_notify['type'] == 3) {
+                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
+                              }else {
+                                echo "<span class='badge badge-pill badge-danger'>Perigo</span>";
+                              }
+                             ?>
+                             </small>
                           </div>
                         </div>
-                        <p class="text-sm mb-0">Mensagem</p>
+                        <p class="text-sm mb-0"><?= $array_notify['title']; ?></p>
                       </div>
                     </div>
                   </a>
+                  <?php
+                    //fim do loop
+                    } while($array_notify = mysqli_fetch_assoc($res_notify));
+                  ?>              
                   <!-- Inserir com um while -->
                 </div>
                 <!-- View all -->
-                <a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">Ver tudo</a>
+                <a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">Fechar</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -74,11 +106,11 @@
               </a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default  dropdown-menu-right ">
                 <div class="row shortcuts px-4">
-                  <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-red">
+                  <a href="<?= BASE . '_site/_user/list/list_log.php'; ?>" class="col-4 shortcut-item">
+                    <span class="shortcut-media avatar rounded-circle bg-gradient-info">
                       <i class="ni ni-bullet-list-67"></i>
                     </span>
-                    <small>Histórico de ações</small>
+                    <small>Histórico</small>
                   </a>                  
                 </div>
               </div>

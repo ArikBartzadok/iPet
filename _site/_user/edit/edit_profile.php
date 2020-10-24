@@ -33,11 +33,7 @@ if($rows > 0) {
   $log_created = $data->format('d-m-Y H:i:s');
     
   $log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
-  $exec = mysqli_query($con, $log);
-  
-  //Atualizando sections
-  $_SESSION['document'] = $document;
-  $_SESSION['profile_image'] = $image;
+  $exec = mysqli_query($con, $log);  
 
   header('location:' . BASE . '_site/_user/profile.php');
 } else {
