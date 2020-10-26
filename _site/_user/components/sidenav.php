@@ -8,6 +8,9 @@
         </a>
       </div>
       <div class="navbar-inner">
+      <?php
+      $id = $_SESSION['user_id'];
+      ?>
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
@@ -40,6 +43,7 @@
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_favs.php';?>">
                 <i class="ni ni-favourite-28 text-danger"></i>
                 <span class="nav-link-text">Pet's salvos</span>
+                <span class="badge badge-md badge-circle badge-floating badge-primary border-white"><?= 'x';?></span>
               </a>
             </li>                       
           </ul>
@@ -58,9 +62,16 @@
               </a>
             </li>
             <li class="nav-item">
+            <?php
+            //Fazendo uma busca pela quantidade de posts do usuário
+            $sql_count_post = "SELECT * FROM post WHERE id_author = '$id'";
+            $res_count_post = mysqli_query($con, $sql_count_post);
+            $count_post = mysqli_num_rows($res_count_post); 
+            ?>
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_posts.php';?>">
                 <i class="ni ni-collection text-default"></i>
                 <span class="nav-link-text">Meus Post's</span>
+                <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $count_post;?></span>
               </a>
             </li>                                             
           </ul>

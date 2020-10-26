@@ -1,12 +1,3 @@
-<!--
-=========================================================
-* USER Panel
-=========================================================
-A fazer:
--
--
--
--->
 <?php 
 include_once('../controller/config.php');
 include_once('../controller/connect.php');

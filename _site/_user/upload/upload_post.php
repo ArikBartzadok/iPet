@@ -41,6 +41,11 @@ do{
   $uf = $array['uf'];
   $image = $array['image'];
 } while($array = mysqli_fetch_assoc($res));
+
+//Fazendo uma busca pela quantidade de posts do usuário
+$sql_count_post = "SELECT * FROM post WHERE id_author = '$id'";
+$res_count_post = mysqli_query($con, $sql_count_post);
+$count_post = mysqli_num_rows($res_count_post); 
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +90,7 @@ do{
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>                  
-                  <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/user/home.php'; ?>">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Post's</li>
                 </ol>
               </nav>
@@ -148,7 +153,7 @@ do{
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center">
                     <div>
-                      <span class="heading">22</span>
+                      <span class="heading"><?= $count_post; ?></span>
                       <span class="description">Postagens realizadas</span>
                     </div>                    
                   </div>

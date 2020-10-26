@@ -56,6 +56,11 @@ do{
   $banner = $array['banner'];
 } while($array = mysqli_fetch_assoc($res));
 
+//Fazendo uma busca pela quantidade de posts do usuário
+$sql_count_post = "SELECT * FROM post WHERE id_author = '$id'";
+$res_count_post = mysqli_query($con, $sql_count_post);
+$count_post = mysqli_num_rows($res_count_post); 
+
 ?>
 
 <!DOCTYPE html>
@@ -170,7 +175,7 @@ do{
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center">
                     <div>
-                      <span class="heading">22</span>
+                      <span class="heading"><?= $count_post;?></span>
                       <span class="description">Postagens</span>
                     </div>                    
                   </div>

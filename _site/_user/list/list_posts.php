@@ -50,7 +50,7 @@ if($_SESSION['rank'] != 1) {
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>                  
-                  <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/user/home.php'; ?>">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Post's</li>
                 </ol>
               </nav>
@@ -88,7 +88,7 @@ if($_SESSION['rank'] != 1) {
                   $init = ($num_page_itens*$page)-$num_page_itens;
                   
                   //Executando query para seleção de todos os posts do usuário, por ordem de publicação
-                  $sql_post = "SELECT * FROM post WHERE id_author = '$id' ORDER BY id_post DESC LIMIT $init, $num_page_itens";
+                  $sql_post = "SELECT * FROM post WHERE id_author = '$id' ORDER BY type DESC LIMIT $init, $num_page_itens";
                   $res_post = mysqli_query($con, $sql_post);
             
             		  //Transforma o $resultado em um array
@@ -124,7 +124,16 @@ if($_SESSION['rank'] != 1) {
                   } else{
                     echo "primary";
                   }
-                ?>  mr-4">
+                ?>  mr-4" data-target="<?php 
+                if($array_post['type'] == 3){
+                  echo "#modal-notification-danger" . $array_post['id_post'];
+                } elseif ($array_post['type'] == 2) {
+                  echo "#modal-notification-warning" . $array_post['id_post'];
+                } else{
+                  echo "#modal-notification-primary" . $array_post['id_post'];
+                }
+              ?>
+                ">
                 <?php
                   if($array_post['type'] == 3){
                     echo "Urgente";
@@ -142,18 +151,33 @@ if($_SESSION['rank'] != 1) {
               <div class="text-center">
                 <h5 class="h3">
                   <?= $array_post['title']; ?>
-                </h5>
+                </h5>                
                 <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i><?= $array_post['city_author'] . ", " . $array_post['uf'];; ?>
-                </div>
-                <div class="h5 mt-4">
-                  ---
+                <?php
+                $date = date_create($array_post['created_at']);
+                //echo date_format($date, 'Y-m-d H:i:s');
+                ?>                                
+                  <i class="ni location_pin mr-2"></i><?= date_format($date, 'd/m') . " às " . date_format($date, 'H:i') ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col">
-                  <div class="card-profile-stats d-flex">
-                  texto aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaa aaaa aaaaaaa aaaaaaaaa
+                  <div class="card-profile-stats d-flex">                  
+                  <?php
+                  //Limitanto a exibição do texto por tamanho
+                  $string = strip_tags($array_post['text']);
+                  if (strlen($string) > 100) {
+                  
+                      // truncate string
+                      $stringCut = substr($string, 0, 100);
+                      $endPoint = strrpos($stringCut, ' ');
+                  
+                      //se a string não contiver nenhum espaço, ela será cortada sem base de palavra.
+                      $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                      $string .= '...';
+                  }
+                  echo $string;
+                  ?>
                   </div>
                 </div>
               </div>              
@@ -161,7 +185,7 @@ if($_SESSION['rank'] != 1) {
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center">
                   <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>
+                    <i class="ni business_briefcase-24 mr-2"></i>
                   <?php
                     if($_SESSION['rank'] == 1){
                       echo "Voluntário";
@@ -173,10 +197,19 @@ if($_SESSION['rank'] != 1) {
                       echo "Oops, ocorreu um erro...";
                     }
                   ?> , <?= $array_post['author']; ?>
-                </div>
+                  </div>                  
                   </div>
                 </div>
               </div>
+              <div>
+              <div class="row justify-content-center">
+                </div class="col">
+                  <div class="text-center">
+                  <div class="h5 font-weight-300">
+                    <i class="ni location_pin mr-2"></i><?= $array_post['city_author'] . ", " . $array_post['uf']; ?>
+                  </div>
+                  </div>
+                </div>
               <div class="row justify-content-center">
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
@@ -186,7 +219,7 @@ if($_SESSION['rank'] != 1) {
                   </button>                
                 </div>
                 <div class="col col-lg-3 order-lg-2">
-                  <button class="btn btn-icon btn-info" type="button">
+                  <button class="btn btn-icon btn-info" type="button" data-toggle="modal" data-target="#modal-edit<? $array_post['id_post']; ?>">
 	                  <span class="btn-inner--icon"><i class="ni ni-settings-gear-65"></i></span>
                   </button>
                 </div>
@@ -208,7 +241,7 @@ if($_SESSION['rank'] != 1) {
               </div>
               <div class="modal-body">
                 <div class="btn-wrapper text-center">
-                  <a href="https://api.whatsapp.com/send?phone=55<?= $array_post['telephone']; ?>&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês" class="btn btn-neutral btn-icon" target="_blank">
+                  <a href="https://api.whatsapp.com/send?phone=55<?= $array_post['telephone']; ?>&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês,%20Pet%20-%20<?= $array_post['id_post']?>" target="_blank" class="btn btn-neutral btn-icon">
                     <span class="btn-inner--icon"><img src="<?= PUBLICO . 'img/icons/common/whats.png'; ?>"></span>
                     <span class="btn-inner--text">Whatsapp</span>
                   </a>
@@ -247,6 +280,136 @@ if($_SESSION['rank'] != 1) {
           </div>
         </div>
         <!-- End Modal Email -->
+
+        <!-- Start notification Danger -->             
+        <div class="modal fade" id="modal-notification-danger<?= $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+          <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-danger">        	
+              <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-notification">Este Pet precisa de sua ajuda!</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            
+              <div class="modal-body">
+            	
+                <div class="py-3 text-center">
+                  <i class="ni ni-pin-3 fa-3x"></i>
+                  <h4 class="heading mt-4">Ele está em <?= $array_post['city_author'] . ", " . $array_post['uf'];?>!</h4>
+                  <p><?= $array_post['text'];?></p>
+                </div>
+                
+              </div>
+            
+              <div class="modal-footer">
+                <a class="btn btn-neutral btn-icon" href="https://api.whatsapp.com/send?phone=55<?= $array_post['telephone']; ?>&amp;text=Urgente%20iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês,%20Pet%20-%20<?= $array_post['id_post']?>" target="_blank">
+                  <span class="btn-inner--icon"><img src="<?= PUBLICO; ?>img/icons/common/whats.png"></span>
+                  <span class="btn-inner--text">Ajudar</span>
+                </a>                
+                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Fechar</button>
+              </div>            
+            </div>
+          </div>         
+        </div>
+
+        <!-- End notification -->
+
+        <!-- Start notification Warn -->             
+        <div class="modal fade" id="modal-notification-warning<?= $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+          <div class="modal-dialog modal-warning modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-warning">        	
+              <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-notification">Você pode ajudar este Pet?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            
+              <div class="modal-body">
+            	
+                <div class="py-3 text-center">
+                  <i class="ni ni-notification-70 fa-3x"></i>
+                  <h4 class="heading mt-4">Ele está em <?= $array_post['city_author'] . ", " . $array_post['uf'];?>!</h4>
+                  <p><?= $array_post['text'];?></p>
+                </div>
+                
+              </div>
+            
+              <div class="modal-footer">
+                <a class="btn btn-neutral btn-icon" href="https://api.whatsapp.com/send?phone=55<?= $array_post['telephone']; ?>&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês,%20Pet%20-%20<?= $array_post['id_post']?>" target="_blank">
+                  <span class="btn-inner--icon"><img src="<?= PUBLICO; ?>img/icons/common/whats.png"></span>
+                  <span class="btn-inner--text">Ajudar</span>
+                </a>                
+                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Fechar</button>
+              </div>            
+            </div>
+          </div>         
+        </div>
+
+        <!-- End notification -->
+
+        <!-- Start notification Primary -->             
+        <div class="modal fade" id="modal-notification-primary<?= $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+          <div class="modal-dialog modal-primary modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-primary">        	
+              <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-notification">Você pode ajudar este Pet?</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            
+              <div class="modal-body">
+            	
+                <div class="py-3 text-center">
+                  <i class="ni ni-tie-bow fa-3x"></i>
+                  <h4 class="heading mt-4">Ele está em <?= $array_post['city_author'] . ", " . $array_post['uf'];?>!</h4>
+                  <p><?= $array_post['text'];?></p>
+                </div>
+                
+              </div>
+            
+              <div class="modal-footer">
+                <a class="btn btn-neutral btn-icon" href="https://api.whatsapp.com/send?phone=55<?= $array_post['telephone']; ?>&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês,%20Pet%20-%20<?= $array_post['id_post']?>" target="_blank">
+                  <span class="btn-inner--icon"><img src="<?= PUBLICO; ?>img/icons/common/whats.png"></span>
+                  <span class="btn-inner--text">Ajudar</span>
+                </a>                
+                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Fechar</button>
+              </div>            
+            </div>
+          </div>         
+        </div>
+
+        <!-- End notification -->
+
+        <!-- Start Edit-->          
+        <div class="modal fade" id="modal-edit<? $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">        	
+              <div class="modal-body p-0">
+                <div class="card bg-secondary border-0 mb-0">
+                  <div class="card-header bg-transparent pb-5">
+                    <div class="text-muted text-center mt-2 mb-3"><small>Gerenciar</small></div>        
+                    <div class="btn-wrapper text-center">
+                      <a href="<?= BASE . '_site/_user/delete/delete_post.php?id=' . $array_post['id_post'];?>">                             
+                        <button class="btn btn-icon btn-danger" type="button">	                        
+                          <span class="btn-inner--text">Deletar</span>
+                        </button>   
+                      </a>
+                    </div>                                    
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                      <small><span class="text-danger font-weight-700">* </span>Esta ação não poderá ser desfeita...</small>
+                    </div>        
+                  </div>
+                </div>                
+              </div>            
+            </div>
+          </div>
+        </div>
+        <!-- End Edit-->
         <!-- End modals-->
       <?php
         //fim do loop
@@ -258,7 +421,7 @@ if($_SESSION['rank'] != 1) {
       <nav aria-label="...">
                     <ul class="pagination">
                       <li class="page-item">
-                        <a class="page-link" href="list_users.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
+                        <a class="page-link" href="list_posts.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
                           <i class="fa fa-angle-left"></i>
                           <span class="sr-only">Anterior</span>
                         </a>
@@ -272,10 +435,10 @@ if($_SESSION['rank'] != 1) {
                             $current = "active";
                           }
                       ?>
-                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_users.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_posts.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                       <?php }?>
                       <li class="page-item">
-                        <a class="page-link" href="list_users.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
+                        <a class="page-link" href="list_posts.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
                           <i class="fa fa-angle-right"></i>
                           <span class="sr-only">Próximo</span>
                         </a>

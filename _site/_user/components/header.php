@@ -15,6 +15,12 @@
               <a href="list/list_ongs.php" class="btn btn-sm btn-neutral">ONG's</a>              
             </div>
           </div>
+          <?php
+          //Fazendo uma busca pela quantidade de posts do usuário
+          $sql_count_post = "SELECT * FROM post";
+          $res_count_post = mysqli_query($con, $sql_count_post);
+          $count_post = mysqli_num_rows($res_count_post); 
+          ?>
           <!-- Card stats -->
           <div class="row">
             <div class="col-xl-3 col-md-6">
@@ -24,7 +30,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Pets para ajudar</h5>
-                      <span class="h2 font-weight-bold mb-0">000</span>
+                      <span class="h2 font-weight-bold mb-0"><?= $count_post;?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">

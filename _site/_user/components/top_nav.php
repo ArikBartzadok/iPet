@@ -33,11 +33,7 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="ni ni-bell-55"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
-              <?php
+            <?php
                   //Fazendo uma busca por todos as notificações deste usuário     
                   //EXIBE APENAS AS 5 ÚLTIMAS NOTIFICAÇÕES             
                   $sql_notify = "SELECT * FROM notify ORDER BY id_not DESC LIMIT 5";
@@ -50,6 +46,15 @@
                   $array_notify = mysqli_fetch_assoc($res_notify);                     
                   
                 ?>
+              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php if($qtd_notify != 0){
+                  echo "<span class='badge badge-dot mr-4'><i class='bg-danger'></i></span>";
+                }
+                ?>
+                <i class="ni ni-bell-55"></i>           
+              </a>
+              <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+              
                 <!-- Dropdown header -->
                 <div class="px-3 py-3">
                   <h6 class="text-sm text-muted m-0">Você tem <strong class="text-primary"><?= $qtd_notify; ?></strong> notificações.</h6>
