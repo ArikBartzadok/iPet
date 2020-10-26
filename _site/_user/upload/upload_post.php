@@ -89,8 +89,8 @@ $count_post = mysqli_num_rows($res_count_post);
               <h6 class="h2 text-white d-inline-block mb-0">iPet</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>                  
-                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/user/home.php'; ?>">Home</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Post's</li>
                 </ol>
               </nav>
