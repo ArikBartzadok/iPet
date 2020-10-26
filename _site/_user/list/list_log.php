@@ -95,33 +95,38 @@ if($_SESSION['rank'] != 1) {
               <div class="table-responsive">
                 <div>                                    
                 <?php
-                  //Paginação de resultados
+                  //Número de resultados a serem exibidos por vez
                   $num_page_itens = 10;
 
-                  //pegando a página atual
-                  $page = intval($_GET['page']);
+                  //pegando a página atual                  
+                  $page = (isset($_GET['page']))? $_GET['page'] : 1;
 
-                  //Fazendo uma busca por todos os logs deste usuário
+                  //Fazendo uma busca pela quantidade de logs deste usuário
                   $id = $_SESSION['user_id'];
+                  $sql_num_log = "SELECT * FROM log WHERE user_id = '$id'";
+                  $res_num_log = mysqli_query($con, $sql_num_log);
+
+                  //Parâmetro inicial do filtro SQL LIMIT
+                  $init = ($num_page_itens*$page)-$num_page_itens;
                   
-                  $sql_log = "SELECT * FROM log WHERE user_id = '$id' ORDER BY id_log DESC LIMIT $page, $num_page_itens";
+                  //Executando query para seleção de todos os logs deste usuário
+                  $sql_log = "SELECT * FROM log WHERE user_id = '$id' ORDER BY id_log DESC LIMIT $init, $num_page_itens";
                   $res_log = mysqli_query($con, $sql_log);
             
             		  //Transforma o $resultado em um array
                   $array_log = mysqli_fetch_assoc($res_log); 
                   
-                  //Quantidade de linhas afetadas
-                  //Quantidade total de itens - SELECT count(*) FROM produtos
-                  $num = mysqli_num_rows($res_log);                 
+                  //Quantidade de linhas afetadas                                               
+                  $quanty_logs = mysqli_num_rows($res_num_log);   
 
                   //Definindo a quantidade de páginas e arredondando para o inteiro mais próximo, com a função ceils
-                  $num_pages = ceil($num/$num_page_itens);
+                  $num_pages = ceil($quanty_logs/$num_page_itens);
 
-                  echo $num;
+                  //Total de páginas -> $num_pages;                  
+                  //Total de registros -> $quanty_logs;
 
-                  $profile_image =  $_SESSION['profile_image']; 
-                                    
-
+                  //Definindo a imagem de perfil deste usuário
+                  $profile_image =  $_SESSION['profile_image'];                                     
                 ?>
                   <table class="table align-items-center">
                     <thead class="thead-light">
@@ -137,7 +142,7 @@ if($_SESSION['rank'] != 1) {
                     <tbody class="list">  
                     <?php
                     //Início do loop
-                    do{
+                    do{                      
                     ?>              
                     <tr>
                       <th scope="row">
@@ -182,7 +187,7 @@ if($_SESSION['rank'] != 1) {
                     </tr>  
                     <?php
                     //fim do loop
-                    } while($array_log = mysqli_fetch_assoc($res_log));
+                    } while($array_log = mysqli_fetch_assoc($res_log));                    
                     ?>              
                     </tbody>
                   </table>
@@ -190,14 +195,14 @@ if($_SESSION['rank'] != 1) {
               </div>
               <nav aria-label="...">
                     <ul class="pagination">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="list_log.php?page=0" tabindex="-1">
+                      <li class="page-item">
+                        <a class="page-link" href="list_log.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
                           <i class="fa fa-angle-left"></i>
                           <span class="sr-only">Anterior</span>
                         </a>
                       </li>
                       <?php 
-                        for($i=0;$i<$num_pages;$i++){
+                        for($i=1;$i<$num_pages+1;$i++){
                         
                           $current = "";
 
@@ -205,10 +210,10 @@ if($_SESSION['rank'] != 1) {
                             $current = "active";
                           }
                       ?>
-                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_log.php?page=<?= $i; ?>"><?= $i+1; ?></a></li>
+                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_log.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                       <?php }?>
                       <li class="page-item">
-                        <a class="page-link" href="list_log.php?page=<?= $num_pages-1; ?>">
+                        <a class="page-link" href="list_log.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
                           <i class="fa fa-angle-right"></i>
                           <span class="sr-only">Próximo</span>
                         </a>

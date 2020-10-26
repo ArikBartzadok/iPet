@@ -12,7 +12,7 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-sm btn-neutral">ONG's</a>              
+              <a href="list/list_ongs.php" class="btn btn-sm btn-neutral">ONG's</a>              
             </div>
           </div>
           <!-- Card stats -->

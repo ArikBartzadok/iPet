@@ -38,8 +38,9 @@
               </a>
               <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
               <?php
-                  //Fazendo uma busca por todos as notificações deste usuário                  
-                  $sql_notify = "SELECT * FROM notify ORDER BY id_not DESC";
+                  //Fazendo uma busca por todos as notificações deste usuário     
+                  //EXIBE APENAS AS 5 ÚLTIMAS NOTIFICAÇÕES             
+                  $sql_notify = "SELECT * FROM notify ORDER BY id_not DESC LIMIT 5";
                   $res_notify = mysqli_query($con, $sql_notify);
 
                   //Quantidade de notificações
@@ -106,7 +107,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default  dropdown-menu-right ">
                 <div class="row shortcuts px-4">
-                  <a href="<?= BASE . '_site/_user/list/list_log.php?page=0'; ?>" class="col-4 shortcut-item">
+                  <a href="<?= BASE . '_site/_user/list/list_log.php'; ?>" class="col-4 shortcut-item">
                     <span class="shortcut-media avatar rounded-circle bg-gradient-info">
                       <i class="ni ni-bullet-list-67"></i>
                     </span>

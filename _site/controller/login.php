@@ -9,12 +9,12 @@ $pass = md5(filter_input(INPUT_POST, "pass"));
 
 $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$pass'";
 $res = mysqli_query($con, $sql);
-$array = mysqli_num_rows($res);
+$auth = mysqli_num_rows($res);
+
+$array = mysqli_fetch_assoc($res); 
 
 //desmenbrando o array acima obtido, armazenando seus respectivos campos em suas respectivas variáveis
-if($array != 0) {
-
-	$array = mysqli_fetch_assoc($res); 
+if($auth != 0 && $array['status'] != 0) {
 
 	do{
 		$id = $array['id_user'];
@@ -75,6 +75,7 @@ else {
   unset($_SESSION['name']);
 	unset($_SESSION['rank']);
 		 
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE ."_site/auth/login.php'>";
+	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE ."_site/auth/login.php'>" .
+	"<script type='text/javascript'>alert('Oops... email ou senha incorretos. Certifique-se de que sua conta está ativada.');</script>";
 }
 ?>

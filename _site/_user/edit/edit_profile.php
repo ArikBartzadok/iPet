@@ -37,8 +37,7 @@ if($rows > 0) {
 
   header('location:' . BASE . '_site/_user/profile.php');
 } else {
-  echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=". BASE . "_site/_user/profile.php'>" . "<script type='text/javascript'>alert('Oops, não foi possível realizar as alterações!');</script>";   
   //echo "<script type='text/javascript'>alert('Oops, não foi possível realizar as alterações!');</script>";   
-  //header('location:' . BASE . '_site/_user/profile.php');
+  header('location:' . BASE . '_site/_user/profile.php');
 }
 ?>

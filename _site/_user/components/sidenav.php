@@ -19,25 +19,25 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_pets.php';?>">
                 <i class="ni ni-tag text-info"></i>
                 <span class="nav-link-text">Pet's</span>
               </a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_ongs.php';?>">
                 <i class="ni ni-badge text-primary"></i>
                 <span class="nav-link-text">ONG's</span>
               </a>
             </li>            
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_users.php';?>">
                 <i class="ni ni-single-02 text-yellow"></i>
                 <span class="nav-link-text">Usuários</span>
               </a>
             </li>                                  
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_favs.php';?>">
                 <i class="ni ni-favourite-28 text-danger"></i>
                 <span class="nav-link-text">Pet's salvos</span>
               </a>
@@ -52,13 +52,13 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="<?= BASE . '_site/_user/home.php';?>">
+              <a class="nav-link active" href="<?= BASE . '_site/_user/upload/upload_post.php';?>">
                 <i class="ni ni-single-copy-04 text-info"></i>
                 <span class="nav-link-text">Realizar Post</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_posts.php';?>">
                 <i class="ni ni-collection text-default"></i>
                 <span class="nav-link-text">Meus Post's</span>
               </a>

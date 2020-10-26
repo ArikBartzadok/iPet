@@ -35,7 +35,7 @@ if($_SESSION['rank'] != 1) {
 	header('location:' . BASE);
 }
 
-//Fazendo uma busca para ter certeza de que este e-mail está livre para o uso
+//Fazendo uma busca por todos os dados do usuário
 $id = $_SESSION['user_id'];
 $sql = "SELECT * FROM user WHERE id_user = '$id'";
 $res = mysqli_query($con, $sql);
@@ -283,8 +283,37 @@ do{
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-uf">Estado</label>
-                        <input name="uf" type="text" id="input-uf" class="form-control" placeholder="Estado" value="<?= $uf; ?>">
+                        <label class="form-control-label" for="input-uf">Estado</label>                        
+                        <select name="uf" class="form-control" id="exampleFormControlSelect1">
+                          <option value="<?= $uf; ?>" selected><?= $uf;?></option>                      
+                          <option value="AC">AC</option>
+                          <option value="AL">AL</option>
+                          <option value="AP">AP</option>
+                          <option value="AM">AM</option>
+                          <option value="BA">BA</option>
+                          <option value="CE">CE</option>
+                          <option value="DF">DF</option>
+                          <option value="ES">ES</option>
+                          <option value="GO">GO</option>
+                          <option value="MA">MA</option>
+                          <option value="MT">MT</option>
+                          <option value="MS">MS</option>
+                          <option value="MG">MG</option>
+                          <option value="PA">PA</option>
+                          <option value="PB">PB</option>
+                          <option value="PR">PR</option>
+                          <option value="PE">PE</option>
+                          <option value="PI">PI</option>
+                          <option value="RJ">RJ</option>
+                          <option value="RN">RN</option>
+                          <option value="RS">RS</option>
+                          <option value="RO">RO</option>
+                          <option value="RR">RR</option>
+                          <option value="SC">SC</option>
+                          <option value="SP">SP</option>
+                          <option value="SE">SE</option>
+                          <option value="TO">TO</option>
+                        </select>
                       </div>
                     </div>                    
                   </div>
@@ -342,7 +371,7 @@ do{
             </div>
             <div class="modal-body">
               <div class="btn-wrapper text-center">
-                <a href="https://api.whatsapp.com/send?phone=55<?= $telephone; ?>&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês" class="btn btn-neutral btn-icon">
+                <a href="https://api.whatsapp.com/send?phone=55<?= $telephone; ?>&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês" class="btn btn-neutral btn-icon" target="_blank">
                   <span class="btn-inner--icon"><img src="<?= PUBLICO . 'img/icons/common/whats.png'; ?>"></span>
                   <span class="btn-inner--text">Whatsapp</span>
                 </a>
@@ -368,7 +397,7 @@ do{
             </div>
             <div class="modal-body">
               <div class="btn-wrapper text-center">
-                <a href="mailto:<?= $_SESSION['email']?>" class="btn btn-neutral btn-icon">
+                <a href="mailto:<?= $_SESSION['email'];?>" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon"><img src="<?= PUBLICO . 'img/icons/common/gmail.png'; ?>"></span>
                   <span class="btn-inner--text">Gmail</span>
                 </a>
