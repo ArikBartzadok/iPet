@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 26/10/2020 às 02:55
+-- Tempo de geração: 26/10/2020 às 19:33
 -- Versão do servidor: 10.4.11-MariaDB
 -- Versão do PHP: 7.4.5
 
@@ -140,7 +140,25 @@ INSERT INTO `log` (`id_log`, `description`, `action`, `user_id`, `user_name`, `u
 (83, 'Alterou seus dados pessoais', 'update', 33, 'Delete', '00000000000', '25-10-2020 20:42:45'),
 (84, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '25-10-2020 21:49:51'),
 (85, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '25-10-2020 21:51:11'),
-(86, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '25-10-2020 21:51:11');
+(86, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '25-10-2020 21:51:11'),
+(87, 'Entrou no sistema', 'login', 33, 'Delete', '00000000000', '26-10-2020 11:03:21'),
+(88, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 11:04:36'),
+(89, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 11:36:33'),
+(90, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 12:18:16'),
+(91, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 12:18:33'),
+(92, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 12:18:51'),
+(93, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 12:19:09'),
+(94, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 12:19:28'),
+(95, 'Excluiu o post 1', 'Delete', 33, 'Delete', '00000000000', '26-10-2020 13:27:42'),
+(96, 'Excluiu o post 5', 'Delete', 33, 'Delete', '00000000000', '26-10-2020 13:28:31'),
+(97, 'Excluiu o post 6', 'Delete', 33, 'Delete', '00000000000', '26-10-2020 13:28:45'),
+(98, 'Excluiu o post 9', 'Delete', 33, 'Delete', '00000000000', '26-10-2020 13:32:39'),
+(99, 'Excluiu o post 10', 'Delete', 33, 'Delete', '00000000000', '26-10-2020 13:50:40'),
+(100, 'Entrou no sistema', 'login', 33, 'Delete', '00000000000', '26-10-2020 13:52:40'),
+(101, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:08:45'),
+(102, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:09:05'),
+(103, 'Alterou seus dados pessoais', 'update', 33, 'Delete', '00000000000', '26-10-2020 14:09:21'),
+(104, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:09:42');
 
 -- --------------------------------------------------------
 
@@ -204,9 +222,14 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id_post`, `id_author`, `cpf_author`, `ranking_author`, `author`, `city_author`, `uf`, `title`, `text`, `telephone`, `email`, `instagram`, `type`, `created_at`, `image`, `image_author`) VALUES
-(1, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 1', 'aaaa', '11111111', 'delete@delete.com', '@dhiogo_fer', 3, '25-10-2020 21:49:51', 'dog.jpg', 'eugenio.png'),
-(2, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 2', 'aaa', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '25-10-2020 21:51:11', 'dog.jpg', 'eugenio.png'),
-(3, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 3', 'aaa', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '25-10-2020 21:51:11', 'dog.jpg', 'eugenio.png');
+(2, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '25-10-2020 21:51:11', 'dog.jpg', 'eugenio.png'),
+(3, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '25-10-2020 21:51:11', 'dog.jpg', 'eugenio.png'),
+(4, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'biologia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19991621576', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 11:04:36', 'dog.jpg', 'eugenio.png'),
+(7, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'aaaaaa', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '26-10-2020 12:18:33', 'dog.jpg', 'eugenio.png'),
+(8, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'uno', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 12:18:51', 'dog.jpg', 'eugenio.png'),
+(11, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'aaaaaa', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19991621576', 'delete@delete.com', '@dhiogo_fer', 3, '26-10-2020 14:08:45', 'dog.jpg', 'eugenio.png'),
+(12, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 14:09:05', 'dog.jpg', 'eugenio.png'),
+(13, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'SP', 'uno', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 14:09:42', 'dog.jpg', 'eugenio.png');
 
 -- --------------------------------------------------------
 
@@ -244,7 +267,7 @@ INSERT INTO `user` (`id_user`, `ranking`, `name`, `email`, `password`, `cpf`, `t
 (3, 1, 'Pedro Ferreira', 'pedro.ferreira@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'diogo.png', 'banner3.jpeg', 1, 1),
 (21, 1, 'User', 'sata@sata.com', '202cb962ac59075b964b07152d234b70', '44324268886', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner1.jpeg', 1, 1),
 (32, 1, 'Teste teste', 'aaa@aaa.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
-(33, 1, 'Delete', 'delete@delete.com', '202cb962ac59075b964b07152d234b70', '00000000000', '', '@dhiogo_fer', '', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'Mogi Guaçu', 'RN', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner1.jpeg', 1, 1),
+(33, 1, 'Delete', 'delete@delete.com', '202cb962ac59075b964b07152d234b70', '00000000000', '', '@dhiogo_fer', '', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner1.jpeg', 1, 1),
 (34, 1, 'Ong 1', 'ong1@ong1.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
 (35, 1, 'ong 2', 'ong2@ong2.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
 (36, 1, 'ong3', 'ong3@ong3.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
@@ -299,7 +322,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT de tabela `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT de tabela `notify`
@@ -311,7 +334,7 @@ ALTER TABLE `notify`
 -- AUTO_INCREMENT de tabela `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `user`
