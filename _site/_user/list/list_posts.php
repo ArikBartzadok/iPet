@@ -219,7 +219,7 @@ if($_SESSION['rank'] != 1) {
                   </button>                
                 </div>
                 <div class="col col-lg-3 order-lg-2">
-                  <button class="btn btn-icon btn-info" type="button" data-toggle="modal" data-target="#modal-edit<? $array_post['id_post']; ?>">
+                  <button class="btn btn-icon btn-info" type="button" data-toggle="modal" data-target="#modal-edit<?= $array_post['id_post']; ?>">
 	                  <span class="btn-inner--icon"><i class="ni ni-settings-gear-65"></i></span>
                   </button>
                 </div>
@@ -384,7 +384,7 @@ if($_SESSION['rank'] != 1) {
         <!-- End notification -->
 
         <!-- Start Edit-->          
-        <div class="modal fade" id="modal-edit<? $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal fade" id="modal-edit<?= $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
           <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">        	
               <div class="modal-body p-0">
