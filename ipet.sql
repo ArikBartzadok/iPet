@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 26/10/2020 às 19:33
+-- Tempo de geração: 27/10/2020 às 05:07
 -- Versão do servidor: 10.4.11-MariaDB
 -- Versão do PHP: 7.4.5
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `favorite` (
   `id_fav` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_post` int(11) NOT NULL,
-  `created_at` varchar(30) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `created` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -158,7 +158,63 @@ INSERT INTO `log` (`id_log`, `description`, `action`, `user_id`, `user_name`, `u
 (101, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:08:45'),
 (102, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:09:05'),
 (103, 'Alterou seus dados pessoais', 'update', 33, 'Delete', '00000000000', '26-10-2020 14:09:21'),
-(104, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:09:42');
+(104, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 14:09:42'),
+(105, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:31:06'),
+(106, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:41:36'),
+(107, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:45:43'),
+(108, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:46:28'),
+(109, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:47:49'),
+(110, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:54:13'),
+(111, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:55:06'),
+(112, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 16:55:43'),
+(113, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:00:06'),
+(114, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:00:31'),
+(115, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:04:06'),
+(116, 'Favoritou o post 7', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:09:10'),
+(117, 'Favoritou o post 7', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:23:00'),
+(118, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:36:03'),
+(119, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:41:37'),
+(120, 'Favoritou o post 7', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 17:50:18'),
+(121, 'Removeu o post 3 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 18:04:51'),
+(122, 'Removeu o post 2 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 18:06:15'),
+(123, 'Favoritou o post 4', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 18:06:46'),
+(124, 'Favoritou o post 2', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 18:07:04'),
+(125, 'Entrou no sistema', 'login', 33, 'Delete', '00000000000', '26-10-2020 22:58:43'),
+(126, 'Favoritou o post 13', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 23:16:49'),
+(127, 'Favoritou o post 8', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 23:29:12'),
+(128, 'Removeu o post 8 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 23:29:44'),
+(129, 'Favoritou o post 8', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 23:31:13'),
+(130, 'Removeu o post 8 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 23:31:36'),
+(131, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 23:34:38'),
+(132, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 23:34:51'),
+(133, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 23:34:51'),
+(134, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '26-10-2020 23:39:00'),
+(135, 'Favoritou o post 8', 'Favorite', 33, 'Delete', '00000000000', '26-10-2020 23:42:48'),
+(136, 'Favoritou o post 11', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:12:41'),
+(137, 'Removeu o post 11 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:12:52'),
+(138, 'Favoritou o post 17', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:21:00'),
+(139, 'Removeu o post 17 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:24:55'),
+(140, 'Favoritou o post 4', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:26:18'),
+(141, 'Favoritou o post 4', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:26:37'),
+(142, 'Removeu o post 4 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:26:58'),
+(143, 'Removeu o post 7 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 00:28:15'),
+(144, 'Excluiu o post 12', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:56:36'),
+(145, 'Excluiu o post 11', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:56:45'),
+(146, 'Excluiu o post 15', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:56:54'),
+(147, 'Excluiu o post 16', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:02'),
+(148, 'Excluiu o post 17', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:09'),
+(149, 'Excluiu o post 2', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:16'),
+(150, 'Excluiu o post 3', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:23'),
+(151, 'Excluiu o post 7', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:31'),
+(152, 'Excluiu o post 4', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:36'),
+(153, 'Excluiu o post 8', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:41'),
+(154, 'Excluiu o post 13', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:47'),
+(155, 'Excluiu o post 14', 'Delete', 33, 'Delete', '00000000000', '27-10-2020 00:57:52'),
+(156, 'Realizou uma postagem', 'post', 33, 'Delete', '00000000000', '27-10-2020 01:02:36'),
+(157, 'Favoritou o post 18', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 01:02:59'),
+(158, 'Removeu o post 18 dos favoritos', 'Favorite', 33, 'Delete', '00000000000', '27-10-2020 01:03:41'),
+(159, 'Saiu do sistema', 'logout', 33, 'Delete', '00000000000', '27-10-2020 01:03:59'),
+(160, 'Entrou no sistema', 'login', 33, 'Delete', '00000000000', '27-10-2020 01:04:10');
 
 -- --------------------------------------------------------
 
@@ -222,14 +278,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id_post`, `id_author`, `cpf_author`, `ranking_author`, `author`, `city_author`, `uf`, `title`, `text`, `telephone`, `email`, `instagram`, `type`, `created_at`, `image`, `image_author`) VALUES
-(2, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '25-10-2020 21:51:11', 'dog.jpg', 'eugenio.png'),
-(3, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '25-10-2020 21:51:11', 'dog.jpg', 'eugenio.png'),
-(4, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'biologia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19991621576', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 11:04:36', 'dog.jpg', 'eugenio.png'),
-(7, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'aaaaaa', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '11111111', 'delete@delete.com', '@dhiogo_fer', 2, '26-10-2020 12:18:33', 'dog.jpg', 'eugenio.png'),
-(8, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'uno', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 12:18:51', 'dog.jpg', 'eugenio.png'),
-(11, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'aaaaaa', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19991621576', 'delete@delete.com', '@dhiogo_fer', 3, '26-10-2020 14:08:45', 'dog.jpg', 'eugenio.png'),
-(12, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'RN', 'Post 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 14:09:05', 'dog.jpg', 'eugenio.png'),
-(13, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'SP', 'uno', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 1, '26-10-2020 14:09:42', 'dog.jpg', 'eugenio.png');
+(18, '33', '00000000000', 1, 'Delete', 'Mogi Guaçu', 'SP', 'biomedicina', 'kkk', '19 99999-0000', 'delete@delete.com', '@dhiogo_fer', 3, '27-10-2020 01:02:36', 'dog.jpg', 'eugenio.png');
 
 -- --------------------------------------------------------
 
@@ -262,16 +311,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `ranking`, `name`, `email`, `password`, `cpf`, `telephone`, `instagram`, `street`, `neighborhood`, `city`, `uf`, `bio`, `image`, `banner`, `use_terms`, `status`) VALUES
-(1, 1, 'Diogo Ferreira', 'diogo.santos134@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '44324268886', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'danilo.png', 'banner2.jpg', 1, 1),
-(2, 1, 'João Eugênio', 'joao.eugenio@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '00000000000', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'pedro.png', 'banner3.jpeg', 1, 1),
-(3, 1, 'Pedro Ferreira', 'pedro.ferreira@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'diogo.png', 'banner3.jpeg', 1, 1),
+(1, 3, 'Diogo Ferreira', 'diogo.santos134@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '44324268886', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'danilo.png', 'banner2.jpg', 1, 1),
+(2, 3, 'João Eugênio', 'joao.eugenio@etec.sp.gov', '202cb962ac59075b964b07152d234b70', '00000000000', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'pedro.png', 'banner3.jpeg', 1, 1),
+(3, 3, 'Pedro Ferreira', 'pedro.ferreira@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'diogo.png', 'banner3.jpeg', 1, 1),
 (21, 1, 'User', 'sata@sata.com', '202cb962ac59075b964b07152d234b70', '44324268886', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner1.jpeg', 1, 1),
 (32, 1, 'Teste teste', 'aaa@aaa.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
 (33, 1, 'Delete', 'delete@delete.com', '202cb962ac59075b964b07152d234b70', '00000000000', '', '@dhiogo_fer', '', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner1.jpeg', 1, 1),
-(34, 1, 'Ong 1', 'ong1@ong1.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
-(35, 1, 'ong 2', 'ong2@ong2.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
-(36, 1, 'ong3', 'ong3@ong3.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
-(37, 1, 'ong4', 'ong4@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
+(34, 2, 'Ong 1', 'ong1@ong1.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
+(35, 2, 'ong 2', 'ong2@ong2.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
+(36, 2, 'ong3', 'ong3@ong3.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
+(37, 2, 'ong4', 'ong4@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
 (38, 2, 'ONG5', 'ong5@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'avatar.png', 'banner1.jpeg', 1, 1);
 
 --
@@ -316,13 +365,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id_fav` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_fav` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT de tabela `notify`
@@ -334,7 +383,7 @@ ALTER TABLE `notify`
 -- AUTO_INCREMENT de tabela `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `user`
