@@ -109,6 +109,8 @@ if($_SESSION['rank'] != 1) {
       <!-- Content rows and cols -->
       <div class="row">
       <?php
+        //Verifica se existem registros:
+        if($quanty_posts):
         //Início do loop
         do{                      
       ?> 
@@ -414,6 +416,22 @@ if($_SESSION['rank'] != 1) {
                     </ul>
               </nav>
       </div>
+
+      <?php
+      else:
+      ?>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-danger" role="alert">
+            <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
+            <span class="alert-text"><strong>Oops...</strong> você ainda não existem pet's cadastrados</span>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+      <?php endif; ?>
       <!-- Content rows and cols -->
 
       <!-- Footer -->

@@ -108,6 +108,8 @@ if($_SESSION['rank'] != 1) {
       <!-- Content rows and cols -->
       <div class="row">
       <?php
+        //Verifica se existem registros:
+        if($quanty_posts):
         //Início do loop
         do{                      
       ?> 
@@ -375,44 +377,16 @@ if($_SESSION['rank'] != 1) {
           </div>         
         </div>
 
-        <!-- End notification -->
-
-        <!-- Start Edit-->          
-        <div class="modal fade" id="modal-edit<? $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-            <div class="modal-content">        	
-              <div class="modal-body p-0">
-                <div class="card bg-secondary border-0 mb-0">
-                  <div class="card-header bg-transparent pb-5">
-                    <div class="text-muted text-center mt-2 mb-3"><small>Gerenciar</small></div>        
-                    <div class="btn-wrapper text-center">
-                      <a href="<?= BASE . '_site/_user/delete/delete_post.php?id=' . $array_post['id_post'];?>">                             
-                        <button class="btn btn-icon btn-danger" type="button">	                        
-                          <span class="btn-inner--text">Deletar</span>
-                        </button>   
-                      </a>
-                    </div>                                    
-                  </div>
-                  <div class="card-body px-lg-5 py-lg-5">
-                    <div class="text-center text-muted mb-4">
-                      <small><span class="text-danger font-weight-700">* </span>Esta ação não poderá ser desfeita...</small>
-                    </div>        
-                  </div>
-                </div>                
-              </div>            
-            </div>
-          </div>
-        </div>
-        <!-- End Edit-->
+        <!-- End notification -->        
         <!-- End modals-->
       <?php
         //fim do loop
-        } while($array_post = mysqli_fetch_assoc($res_post));                    
+        } while($array_post = mysqli_fetch_assoc($res_post));  
       ?>
-        
+
       </div>
       <div class="row">
-      <nav aria-label="...">
+                <nav aria-label="...">
                     <ul class="pagination">
                       <li class="page-item">
                         <a class="page-link" href="list_pets.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
@@ -440,6 +414,22 @@ if($_SESSION['rank'] != 1) {
                     </ul>
               </nav>
       </div>
+      <?php
+      else:
+      ?>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-danger" role="alert">
+            <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
+            <span class="alert-text"><strong>Oops...</strong> você ainda não possui post's favoritados</span>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+      <?php endif; ?>
+              
       <!-- Content rows and cols -->
 
       <!-- Footer -->
