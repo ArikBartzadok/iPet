@@ -40,10 +40,16 @@
               </a>
             </li>                                  
             <li class="nav-item">
+            <?php
+            //Fazendo uma busca pela quantidade de posts do usuário
+            $sql_count_favorite = "SELECT * FROM favorite WHERE user_id = '$id'";
+            $res_count_favorite = mysqli_query($con, $sql_count_favorite);
+            $count_favorite = mysqli_num_rows($res_count_favorite); 
+            ?>
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_favs.php';?>">
                 <i class="ni ni-favourite-28 text-danger"></i>
                 <span class="nav-link-text">Pet's salvos</span>
-                <span class="badge badge-md badge-circle badge-floating badge-primary border-white"><?= 'x';?></span>
+                <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $count_favorite;?></span>
               </a>
             </li>                       
           </ul>
@@ -71,7 +77,7 @@
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_posts.php';?>">
                 <i class="ni ni-collection text-default"></i>
                 <span class="nav-link-text">Meus Post's</span>
-                <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $count_post;?></span>
+                <span class="badge badge-md badge-circle badge-floating badge-info border-white"><?= $count_post;?></span>
               </a>
             </li>                                             
           </ul>

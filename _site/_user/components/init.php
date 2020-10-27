@@ -8,14 +8,14 @@
 
                   //Fazendo uma busca pela quantidade de postagens ativas
                   $id = $_SESSION['user_id'];
-                  $sql_num_post = "SELECT * FROM post WHERE id_author = '$id'";
+                  $sql_num_post = "SELECT * FROM post";
                   $res_num_post = mysqli_query($con, $sql_num_post);
 
                   //Parâmetro inicial do filtro SQL LIMIT
                   $init = ($num_page_itens*$page)-$num_page_itens;
                   
                   //Executando query para seleção de todos os posts do usuário, por ordem de publicação
-                  $sql_post = "SELECT * FROM post WHERE id_author = '$id' ORDER BY type DESC LIMIT $init, $num_page_itens";
+                  $sql_post = "SELECT * FROM post ORDER BY type DESC LIMIT $init, $num_page_itens";
                   $res_post = mysqli_query($con, $sql_post);
             
             		  //Transforma o $resultado em um array
@@ -113,12 +113,12 @@
                   <div class="card-profile-stats d-flex justify-content-center">
                   <div class="h5 mt-4">
                     <i class="ni business_briefcase-24 mr-2"></i>
-                  <?php
-                    if($_SESSION['rank'] == 1){
+                    <?php
+                    if($array_post['ranking_author'] == 1){
                       echo "Voluntário";
-                    } elseif ($_SESSION['rank'] == 2) {
+                    } elseif ($array_post['ranking_author'] == 2) {
                       echo "ONG";
-                    } elseif ($_SESSION['rank'] == 3) {
+                    } elseif ($array_post['ranking_author'] == 3) {
                       echo "Administrador";
                     } else {
                       echo "Oops, ocorreu um erro...";
@@ -141,7 +141,7 @@
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
 	                  <span class="btn-inner--icon">
-                      <i class="ni ni-favourite-28" style="color: red;"></i>
+                      <?= "<a href='" . BASE . "_site/_user/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
                     </span>
                   </button>                
                 </div>                
@@ -302,36 +302,7 @@
             </div>
           </div>         
         </div>
-
         <!-- End notification -->
-
-        <!-- Start Edit-->          
-        <div class="modal fade" id="modal-edit<? $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
-            <div class="modal-content">        	
-              <div class="modal-body p-0">
-                <div class="card bg-secondary border-0 mb-0">
-                  <div class="card-header bg-transparent pb-5">
-                    <div class="text-muted text-center mt-2 mb-3"><small>Gerenciar</small></div>        
-                    <div class="btn-wrapper text-center">
-                      <a href="<?= BASE . '_site/_user/delete/delete_post.php?id=' . $array_post['id_post'];?>">                             
-                        <button class="btn btn-icon btn-danger" type="button">	                        
-                          <span class="btn-inner--text">Deletar</span>
-                        </button>   
-                      </a>
-                    </div>                                    
-                  </div>
-                  <div class="card-body px-lg-5 py-lg-5">
-                    <div class="text-center text-muted mb-4">
-                      <small><span class="text-danger font-weight-700">* </span>Esta ação não poderá ser desfeita...</small>
-                    </div>        
-                  </div>
-                </div>                
-              </div>            
-            </div>
-          </div>
-        </div>
-        <!-- End Edit-->
         <!-- End modals-->
       <?php
         //fim do loop

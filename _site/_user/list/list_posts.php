@@ -186,12 +186,12 @@ if($_SESSION['rank'] != 1) {
                   <div class="card-profile-stats d-flex justify-content-center">
                   <div class="h5 mt-4">
                     <i class="ni business_briefcase-24 mr-2"></i>
-                  <?php
-                    if($_SESSION['rank'] == 1){
+                    <?php
+                    if($array_post['ranking_author'] == 1){
                       echo "Voluntário";
-                    } elseif ($_SESSION['rank'] == 2) {
+                    } elseif ($array_post['ranking_author'] == 2) {
                       echo "ONG";
-                    } elseif ($_SESSION['rank'] == 3) {
+                    } elseif ($array_post['ranking_author'] == 3) {
                       echo "Administrador";
                     } else {
                       echo "Oops, ocorreu um erro...";
@@ -213,9 +213,7 @@ if($_SESSION['rank'] != 1) {
               <div class="row justify-content-center">
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
-	                  <span class="btn-inner--icon">
-                      <i class="ni ni-favourite-28" style="color: red;"></i>
-                    </span>
+                  <?= "<a href='" . BASE . "_site/_user/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
                   </button>                
                 </div>
                 <div class="col col-lg-3 order-lg-2">
