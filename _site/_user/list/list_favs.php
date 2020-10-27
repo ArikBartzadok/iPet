@@ -61,7 +61,7 @@ if($_SESSION['rank'] != 1) {
           </div>          
           <div class="row">
             <div class="col">
-            <h1 class="display-2 text-white">Pet's salvos.</h1>
+            <h1 class="display-2 text-white">Pets salvos.</h1>
             <p class="text-white mt-0 mb-5">Aqui você pode visualizar todos os Pets que foram salvos em sua conta, que tal fazer a diferença?</p>
             </div>
           </div>
@@ -417,11 +417,17 @@ if($_SESSION['rank'] != 1) {
       <?php
       else:
       ?>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-danger" role="alert">
-            <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
-            <span class="alert-text"><strong>Oops...</strong> você ainda não possui post's favoritados</span>
+      <div class="row">      
+        <div class="col-xl-12 order-xl-1">
+          <div class="card">
+            <div class="card-body">              
+        
+              <div class="alert alert-danger" role="alert">
+                <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
+                <span class="alert-text"><strong>Oops...</strong> você ainda não possui posts favoritados</span>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

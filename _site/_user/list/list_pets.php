@@ -51,7 +51,7 @@ if($_SESSION['rank'] != 1) {
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
                   <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Pet's</li>
+                  <li class="breadcrumb-item active" aria-current="page">Pets</li>
                 </ol>
               </nav>
             </div>
@@ -419,12 +419,19 @@ if($_SESSION['rank'] != 1) {
 
       <?php
       else:
-      ?>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-danger" role="alert">
-            <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
-            <span class="alert-text"><strong>Oops...</strong> você ainda não existem pet's cadastrados</span>
+      ?>      
+
+      <div class="row">      
+        <div class="col-xl-12 order-xl-1">
+          <div class="card">
+            <div class="card-body">              
+        
+              <div class="alert alert-danger" role="alert">
+                <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
+                <span class="alert-text"><strong>Oops...</strong> ainda não existem pet's cadastrados...</span>
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>

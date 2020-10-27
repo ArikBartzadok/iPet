@@ -343,12 +343,19 @@
       </div>
       <?php
       else:
-      ?>
-      <div class="row">
-        <div class="col">
-          <div class="alert alert-danger" role="alert">
-            <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
-            <span class="alert-text"><strong>Oops...</strong> ainda não existem pet's cadastrados</span>
+      ?>      
+
+      <div class="row">      
+        <div class="col-xl-12 order-xl-1">
+          <div class="card">
+            <div class="card-body">              
+        
+              <div class="alert alert-danger" role="alert">
+                <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
+                <span class="alert-text"><strong>Oops...</strong> ainda não existem pets cadastrados</span>
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>

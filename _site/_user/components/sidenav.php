@@ -24,13 +24,13 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_pets.php';?>">
                 <i class="ni ni-tag text-info"></i>
-                <span class="nav-link-text">Pet's</span>
+                <span class="nav-link-text">Pets</span>
               </a>
             </li> 
             <li class="nav-item">
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_ongs.php';?>">
                 <i class="ni ni-badge text-primary"></i>
-                <span class="nav-link-text">ONG's</span>
+                <span class="nav-link-text">ONGs</span>
               </a>
             </li>            
             <li class="nav-item">
@@ -48,7 +48,7 @@
             ?>
               <a class="nav-link" href="<?= BASE . '_site/_user/list/list_favs.php';?>">
                 <i class="ni ni-favourite-28 text-danger"></i>
-                <span class="nav-link-text">Pet's salvos</span>
+                <span class="nav-link-text">Pets salvos</span>
                 <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $count_favorite;?></span>
               </a>
             </li>                       
