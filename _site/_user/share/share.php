@@ -66,7 +66,7 @@ if($_SESSION['rank'] != 1) {
             </div>
             <div class="d-flex justify-content-between text-right">
               <div class="col-lg-2 text-right">
-                <i class="fas fa-filter" style="color: #fff"></i>
+                <!-- <i class="fas fa-filter" style="color: #fff"></i> -->
               </div>
               <div class="col-lg-2 text-right">
                     <a href="share.php?filter=1" class="btn btn-sm btn-neutral">Pets</a>              
