@@ -1,12 +1,3 @@
-<!--
-=========================================================
-* ONG Panel
-=========================================================
-A fazer:
--
--
--
--->
 <?php 
 include_once('../controller/config.php');
 include_once('../controller/connect.php');
@@ -25,7 +16,7 @@ if($_SESSION['rank'] != 2) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="desc">
   <meta name="author" content="iPet">
-  <title>iPet | ONG</title>
+  <title>iPet | User</title>
 
   <!-- Styles -->
   <?php
@@ -37,7 +28,7 @@ if($_SESSION['rank'] != 2) {
 <body>
   <!-- Sidenav -->
   <?php
-    include_once "../assets/components/sidenav.php";
+    include_once "components/sidenav.php";
   ?>
   <!-- End Sidenav -->
 
@@ -45,13 +36,13 @@ if($_SESSION['rank'] != 2) {
   <div class="main-content" id="panel">
     <!-- Topnav -->
     <?php
-      include_once "../assets/components/top_nav.php";
+      include_once "components/top_nav.php";
     ?>
     <!-- End Topnav -->
     
     <!-- Header -->
     <?php
-      include_once "../assets/components/header.php";
+      include_once "components/header.php";
     ?>
     <!-- End Header -->
     
@@ -60,7 +51,7 @@ if($_SESSION['rank'] != 2) {
       
       <!-- Content rows and cols -->
       <?php
-        include_once "../assets/components/init_void.php";
+        include_once "components/init.php";
       ?>
       <!-- Content rows and cols -->
 

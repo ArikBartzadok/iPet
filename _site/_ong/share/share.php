@@ -3,7 +3,7 @@ include_once('../../controller/config.php');
 include_once('../../controller/connect.php');
 include_once('../../controller/session.php');
 
-if($_SESSION['rank'] != 1) {
+if($_SESSION['rank'] != 2) {
 	header('location:' . BASE);
 }
 

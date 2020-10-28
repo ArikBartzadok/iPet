@@ -1,21 +1,94 @@
+<?php 
+include_once('../../controller/config.php');
+include_once('../../controller/connect.php');
+include_once('../../controller/session.php');
 
+if($_SESSION['rank'] != 2) {
+	header('location:' . BASE);
+}
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="desc">
+  <meta name="author" content="iPet">
+  <title>iPet | Posts</title>
+
+  <!-- Styles -->
+  <?php
+    include_once "../../assets/components/styles.php";
+  ?>
+  <!-- End Styles -->
+</head>
+
+<body>
+  <!-- Sidenav -->
+  <?php
+    include_once "../components/sidenav.php";
+  ?>
+  <!-- End Sidenav -->
+
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <?php
+      include_once "../components/top_nav.php";
+    ?>
+    <!-- End Topnav -->
+    
+    <!-- Header -->
+    <div class="header bg-gradient-info pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">iPet</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href="<?= BASE . '_site/_ong/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_ong/home.php'; ?>">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Posts</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+                            
+            </div>
+          </div>          
+          <div class="row">
+            <div class="col">
+            <h1 class="display-2 text-white">Minhas postagens</h1>
+            <p class="text-white mt-0 mb-5">Aqui você pode visualizar e gerenciar todas as suas postagens realizadas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+    <!-- End Header -->
+    
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
                 <?php
                   //Número de resultados a serem exibidos por vez
-                  $num_page_itens = 6;
+                  $num_page_itens = 9;
 
                   //pegando a página atual                  
                   $page = (isset($_GET['page']))? $_GET['page'] : 1;
 
                   //Fazendo uma busca pela quantidade de postagens ativas
                   $id = $_SESSION['user_id'];
-                  $sql_num_post = "SELECT * FROM post";
+                  $sql_num_post = "SELECT * FROM post WHERE id_author = '$id'";
                   $res_num_post = mysqli_query($con, $sql_num_post);
 
                   //Parâmetro inicial do filtro SQL LIMIT
                   $init = ($num_page_itens*$page)-$num_page_itens;
                   
                   //Executando query para seleção de todos os posts do usuário, por ordem de publicação
-                  $sql_post = "SELECT * FROM post ORDER BY type DESC LIMIT $init, $num_page_itens";
+                  $sql_post = "SELECT * FROM post WHERE id_author = '$id' ORDER BY type DESC LIMIT $init, $num_page_itens";
                   $res_post = mysqli_query($con, $sql_post);
             
             		  //Transforma o $resultado em um array
@@ -142,11 +215,14 @@
               <div class="row justify-content-center">
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
-	                  <span class="btn-inner--icon">
-                      <?= "<a href='" . BASE . "_site/_ong/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
-                    </span>
+                  <?= "<a href='" . BASE . "_site/_ong/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
                   </button>                
-                </div>                
+                </div>
+                <div class="col col-lg-3 order-lg-2">
+                  <button class="btn btn-icon btn-info" type="button" data-toggle="modal" data-target="#modal-edit<?= $array_post['id_post']; ?>">
+	                  <span class="btn-inner--icon"><i class="ni ni-settings-gear-65"></i></span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>          
@@ -304,7 +380,36 @@
             </div>
           </div>         
         </div>
+
         <!-- End notification -->
+
+        <!-- Start Edit-->          
+        <div class="modal fade" id="modal-edit<?= $array_post['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">        	
+              <div class="modal-body p-0">
+                <div class="card bg-secondary border-0 mb-0">
+                  <div class="card-header bg-transparent pb-5">
+                    <div class="text-muted text-center mt-2 mb-3"><small>Gerenciar</small></div>        
+                    <div class="btn-wrapper text-center">
+                      <a href="<?= BASE . '_site/_ong/delete/delete_post.php?id=' . $array_post['id_post'];?>">                             
+                        <button class="btn btn-icon btn-danger" type="button">	                        
+                          <span class="btn-inner--text">Deletar</span>
+                        </button>   
+                      </a>
+                    </div>                                    
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                      <small><span class="text-danger font-weight-700">* </span>Esta ação não poderá ser desfeita...</small>
+                    </div>        
+                  </div>
+                </div>                
+              </div>            
+            </div>
+          </div>
+        </div>
+        <!-- End Edit-->
         <!-- End modals-->
       <?php
         //fim do loop
@@ -316,7 +421,7 @@
       <nav aria-label="...">
                     <ul class="pagination">
                       <li class="page-item">
-                        <a class="page-link" href="home.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
+                        <a class="page-link" href="list_posts.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
                           <i class="fa fa-angle-left"></i>
                           <span class="sr-only">Anterior</span>
                         </a>
@@ -330,10 +435,10 @@
                             $current = "active";
                           }
                       ?>
-                      <li class="page-item <?= $current; ?>"><a class="page-link" href="home.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_posts.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                       <?php }?>
                       <li class="page-item">
-                        <a class="page-link" href="home.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
+                        <a class="page-link" href="list_posts.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
                           <i class="fa fa-angle-right"></i>
                           <span class="sr-only">Próximo</span>
                         </a>
@@ -352,7 +457,7 @@
         
               <div class="alert alert-danger" role="alert">
                 <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
-                <span class="alert-text"><strong>Oops...</strong> ainda não existem pets cadastrados</span>
+                <span class="alert-text"><strong>Oops...</strong> você ainda não possui posts cadastrados...</span>
               </div>
               
             </div>
@@ -364,3 +469,22 @@
 
       <?php endif; ?>
       <!-- Content rows and cols -->
+
+      <!-- Footer -->
+      <?php
+        include_once "../../assets/components/footer.php";
+      ?>
+      <!-- End Footer -->
+      
+    </div>
+  </div>
+
+  <!-- Styles -->
+  <?php
+    include_once "../../assets/components/scripts.php";
+  ?>
+  <!-- End Styles -->
+  
+</body>
+
+</html>

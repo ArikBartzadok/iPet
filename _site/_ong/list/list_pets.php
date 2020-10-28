@@ -1,20 +1,95 @@
+<?php 
+include_once('../../controller/config.php');
+include_once('../../controller/connect.php');
+include_once('../../controller/session.php');
 
+if($_SESSION['rank'] != 2) {
+	header('location:' . BASE);
+}
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="desc">
+  <meta name="author" content="iPet">
+  <title>iPet | Pets</title>
+
+  <!-- Styles -->
+  <?php
+    include_once "../../assets/components/styles.php";
+  ?>
+  <!-- End Styles -->
+</head>
+
+<body>
+  <!-- Sidenav -->
+  <?php
+    include_once "../components/sidenav.php";
+  ?>
+  <!-- End Sidenav -->
+
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <?php
+      include_once "../components/top_nav.php";
+    ?>
+    <!-- End Topnav -->
+    
+    <!-- Header -->
+    <div class="header bg-gradient-info pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">iPet</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_ong/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_ong/home.php'; ?>">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Pets</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+                            
+            </div>
+          </div>          
+          <div class="row">
+            <div class="col">
+            <h1 class="display-2 text-white">Ajude um Pet!</h1>
+            <p class="text-white mt-0 mb-5">Aqui você pode visualizar todos os Pets que estão precisando de ajuda, vamos lá?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+    <!-- End Header -->
+    
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
                 <?php
+                  //Selecionando os ids em favoritos
+                  $id = $_SESSION['user_id'];                  
+
                   //Número de resultados a serem exibidos por vez
-                  $num_page_itens = 6;
+                  $num_page_itens = 9;
 
                   //pegando a página atual                  
                   $page = (isset($_GET['page']))? $_GET['page'] : 1;
 
-                  //Fazendo uma busca pela quantidade de postagens ativas
-                  $id = $_SESSION['user_id'];
+                  //Fazendo uma busca pela quantidade de postagens               
                   $sql_num_post = "SELECT * FROM post";
                   $res_num_post = mysqli_query($con, $sql_num_post);
 
                   //Parâmetro inicial do filtro SQL LIMIT
                   $init = ($num_page_itens*$page)-$num_page_itens;
                   
-                  //Executando query para seleção de todos os posts do usuário, por ordem de publicação
+                  //Executando query para seleção de todos os posts, por ordem de publicação
                   $sql_post = "SELECT * FROM post ORDER BY type DESC LIMIT $init, $num_page_itens";
                   $res_post = mysqli_query($con, $sql_post);
             
@@ -28,7 +103,7 @@
                   $num_pages = ceil($quanty_posts/$num_page_itens);
 
                   //Total de páginas -> $num_pages;                  
-                  //Total de registros -> $quanty_posts;
+                  //Total de registros -> $quanty_posts;                  
 
                 ?>      
       <!-- Content rows and cols -->
@@ -92,7 +167,7 @@
               <div class="row">
                 <div class="col">
                   <div class="card-profile-stats d-flex">                  
-                  <?php
+                  <?php                                    
                   //Limitanto a exibição do texto por tamanho
                   $string = strip_tags($array_post['text']);
                   if (strlen($string) > 100) {
@@ -115,7 +190,7 @@
                   <div class="card-profile-stats d-flex justify-content-center">
                   <div class="h5 mt-4">
                     <i class="ni business_briefcase-24 mr-2"></i>
-                    <?php
+                  <?php
                     if($array_post['ranking_author'] == 1){
                       echo "Voluntário";
                     } elseif ($array_post['ranking_author'] == 2) {
@@ -139,12 +214,11 @@
                   </div>
                   </div>
                 </div>
-              <div class="row justify-content-center">
+              <div class="row justify-content-center">              
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
-	                  <span class="btn-inner--icon">
+                    <a href="<?= BASE . '_site/_ong/edit/edit_fav_set.php?id=' . $array_post['id_post']; ?>"><span class="btn-inner--icon">
                       <?= "<a href='" . BASE . "_site/_ong/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
-                    </span>
                   </button>                
                 </div>                
               </div>
@@ -304,7 +378,8 @@
             </div>
           </div>         
         </div>
-        <!-- End notification -->
+
+        <!-- End notification -->       
         <!-- End modals-->
       <?php
         //fim do loop
@@ -316,7 +391,7 @@
       <nav aria-label="...">
                     <ul class="pagination">
                       <li class="page-item">
-                        <a class="page-link" href="home.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
+                        <a class="page-link" href="list_pets.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
                           <i class="fa fa-angle-left"></i>
                           <span class="sr-only">Anterior</span>
                         </a>
@@ -330,10 +405,10 @@
                             $current = "active";
                           }
                       ?>
-                      <li class="page-item <?= $current; ?>"><a class="page-link" href="home.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_pets.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                       <?php }?>
                       <li class="page-item">
-                        <a class="page-link" href="home.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
+                        <a class="page-link" href="list_pets.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
                           <i class="fa fa-angle-right"></i>
                           <span class="sr-only">Próximo</span>
                         </a>
@@ -341,6 +416,7 @@
                     </ul>
               </nav>
       </div>
+
       <?php
       else:
       ?>      
@@ -352,7 +428,7 @@
         
               <div class="alert alert-danger" role="alert">
                 <span class="alert-icon"><i class="ni ni-notification-70"></i></span>
-                <span class="alert-text"><strong>Oops...</strong> ainda não existem pets cadastrados</span>
+                <span class="alert-text"><strong>Oops...</strong> ainda não existem pet's cadastrados...</span>
               </div>
               
             </div>
@@ -364,3 +440,22 @@
 
       <?php endif; ?>
       <!-- Content rows and cols -->
+
+      <!-- Footer -->
+      <?php
+        include_once "../../assets/components/footer.php";
+      ?>
+      <!-- End Footer -->
+      
+    </div>
+  </div>
+
+  <!-- Styles -->
+  <?php
+    include_once "../../assets/components/scripts.php";
+  ?>
+  <!-- End Styles -->
+  
+</body>
+
+</html>
