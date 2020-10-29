@@ -12,6 +12,10 @@ $res = mysqli_query($con, $sql);
 $auth = mysqli_affected_rows($con);
 
 if($auth != 0){
+	//Excluindo possível notificação
+	$notify = "DELETE FROM notify WHERE id_post = '$id'";
+	$del_notify = mysqli_query($con, $notify);
+	
   //Gerando o Log
 	$log_desc = "Excluiu o post " . $id;
 	$log_action = "Delete";

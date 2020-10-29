@@ -64,11 +64,19 @@
                 </div>
                 <!-- List group -->
                 <div class="list-group list-group-flush">
-                  <?php
+                <?php
+                    //Verifica se existem registros:
+                    if($qtd_notify):
                     //Início do loop
                     do{
+
+                      if($array_notify['origin'] == 0){
+                        $notify_telephone = "https://api.whatsapp.com/send?phone=55" . $array_notify['telephone_user'] . "&amp;text=iPet%20-%20Ol%C3%A1,%20eu%20gostaria%20de%20contatar%20vocês,%20Pet%20-%20" . $array_notify['id_post'];
+                      }else{
+                        $notify_telephone = "#!";
+                      }
                   ?>              
-                  <a href="#!" class="list-group-item list-group-item-action">
+                  <a href="<?= $notify_telephone;?>" class="list-group-item list-group-item-action" target="_blank">
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
@@ -87,22 +95,42 @@
                               } elseif ($array_notify['type'] == 2) {
                                 echo "<span class='badge badge-pill badge-success'>Sucesso</span>";
                               } elseif ($array_notify['type'] == 3) {
-                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
+                                echo "<span class='badge badge-pill badge-danger'>Urgente</span>";
                               }else {
-                                echo "<span class='badge badge-pill badge-danger'>Perigo</span>";
+                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
                               }
                              ?>
                              </small>
                           </div>
                         </div>
-                        <p class="text-sm mb-0"><?= $array_notify['title']; ?></p>
+                        <p class="text-sm mb-0"><?= $array_notify['created_at'] . " - " . $array_notify['title']; ?></p>
                       </div>
                     </div>
                   </a>
                   <?php
                     //fim do loop
                     } while($array_notify = mysqli_fetch_assoc($res_notify));
-                  ?>              
+
+                  else:
+                  ?>
+                  <a href="#!" class="list-group-item list-group-item-action">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+                        <!-- Icon -->
+                        <i class="ni ni-bold-up"></i>
+                      </div>
+                      <div class="col ml--2">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div>
+                            <h4 class="mb-0 text-sm">Oops...</h4>
+                          </div>                          
+                        </div>
+                        <p class="text-sm mb-0">Não existem notificações.</p>
+                      </div>
+                    </div>
+                  </a> 
+
+                  <?php endif; ?> 
                   <!-- Inserir com um while -->
                 </div>
                 <!-- View all -->

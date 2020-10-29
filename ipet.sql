@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 27/10/2020 às 22:01
+-- Tempo de geração: 29/10/2020 às 01:24
 -- Versão do servidor: 10.4.11-MariaDB
 -- Versão do PHP: 7.4.5
 
@@ -33,6 +33,13 @@ CREATE TABLE `favorite` (
   `post_id` int(11) NOT NULL,
   `created` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Despejando dados para a tabela `favorite`
+--
+
+INSERT INTO `favorite` (`id_fav`, `user_id`, `post_id`, `created`) VALUES
+(38, 32, 21, '28-10-2020 21:21:53');
 
 -- --------------------------------------------------------
 
@@ -240,7 +247,100 @@ INSERT INTO `log` (`id_log`, `description`, `action`, `user_id`, `user_name`, `u
 (183, 'Entrou no sistema', 'login', 33, 'Arthur Schopenhauer', '00000000000', '27-10-2020 12:46:58'),
 (184, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 13:05:21'),
 (185, 'Saiu do sistema', 'logout', 33, 'Arthur Schopenhauer', '00000000000', '27-10-2020 17:35:14'),
-(186, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 17:35:26');
+(186, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 17:35:26'),
+(187, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 18:36:12'),
+(188, 'Favoritou o post 21', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 18:49:48'),
+(189, 'Favoritou o post 21', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 18:49:48'),
+(190, 'Removeu o post 21 dos favoritos', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 18:49:57'),
+(191, 'Favoritou o post 21', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 18:50:05'),
+(192, 'Removeu o post 21 dos favoritos', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '27-10-2020 18:53:22'),
+(193, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 14:16:10'),
+(194, 'Favoritou o post 21', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 14:22:15'),
+(195, 'Removeu o post 21 dos favoritos', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 14:22:29'),
+(196, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 15:01:46'),
+(197, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 15:11:04'),
+(198, 'Saiu do sistema', 'logout', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 15:27:59'),
+(199, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 15:29:04'),
+(200, 'Alterou seus dados pessoais', 'update', 34, 'Ong 1', '00000000000', '28-10-2020 15:35:49'),
+(201, 'Alterou seus dados pessoais', 'update', 34, 'Ong 1', '00000000000', '28-10-2020 15:56:19'),
+(202, 'Favoritou o post 21', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 15:57:06'),
+(203, 'Removeu o post 21 dos favoritos', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 15:58:16'),
+(204, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 15:59:56'),
+(205, 'Excluiu o post 24', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 16:00:44'),
+(206, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 16:01:06'),
+(207, 'Favoritou o post 25', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:01:16'),
+(208, 'Removeu o post 25 dos favoritos', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:01:35'),
+(209, 'Favoritou o post 23', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:03:05'),
+(210, 'Favoritou o post 23', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:03:07'),
+(211, 'Removeu o post 23 dos favoritos', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:03:57'),
+(212, 'Favoritou o post 23', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:04:11'),
+(213, 'Desativou sua conta', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 16:07:10'),
+(214, 'Saiu do sistema', 'logout', 34, 'Ong 1', '00000000000', '28-10-2020 16:07:12'),
+(215, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 16:08:07'),
+(216, 'Removeu o post 23 dos favoritos', 'Favorite', 34, 'Ong 1', '00000000000', '28-10-2020 16:08:32'),
+(217, 'Saiu do sistema', 'logout', 34, 'Ong 1', '00000000000', '28-10-2020 16:14:26'),
+(218, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 16:14:36'),
+(219, 'Saiu do sistema', 'logout', 34, 'Ong 1', '00000000000', '28-10-2020 16:16:03'),
+(220, 'Entrou no sistema', 'login', 1, 'Diogo Ferreira', '44324268886', '28-10-2020 16:16:58'),
+(221, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 16:19:38'),
+(222, 'Saiu do sistema', 'logout', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 16:20:56'),
+(223, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 16:32:43'),
+(224, 'Saiu do sistema', 'logout', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 16:33:06'),
+(225, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 16:33:15'),
+(226, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 16:33:51'),
+(227, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 19:34:35'),
+(228, 'Excluiu o post 26', 'Delete', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 20:04:21'),
+(229, 'Realizou uma postagem', 'post', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 20:06:01'),
+(230, 'Excluiu o post 27', 'Delete', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 20:06:09'),
+(231, 'Saiu do sistema', 'logout', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 20:06:37'),
+(232, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 20:06:48'),
+(233, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:08:19'),
+(234, 'Excluiu o post 28', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:08:42'),
+(235, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:09:29'),
+(236, 'Excluiu o post 29', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:10:37'),
+(237, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:10:50'),
+(238, 'Saiu do sistema', 'logout', 34, 'Ong 1', '00000000000', '28-10-2020 20:14:32'),
+(239, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 20:14:39'),
+(240, 'Saiu do sistema', 'logout', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 20:14:57'),
+(241, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 20:15:08'),
+(242, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 20:15:09'),
+(243, 'Excluiu o post 30', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:15:20'),
+(244, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:20:09'),
+(245, 'Excluiu o post 31', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:28:38'),
+(246, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:29:02'),
+(247, 'Excluiu o post 32', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:30:33'),
+(248, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:30:47'),
+(249, 'Excluiu o post 33', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:33:47'),
+(250, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:34:00'),
+(251, 'Excluiu o post 34', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:34:44'),
+(252, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:34:56'),
+(253, 'Excluiu o post 35', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:35:57'),
+(254, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:36:07'),
+(255, 'Excluiu o post 36', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:36:17'),
+(256, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:40:32'),
+(257, 'Excluiu o post 37', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:40:48'),
+(258, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:45:40'),
+(259, 'Excluiu o post 38', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:50:59'),
+(260, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:51:29'),
+(261, 'Excluiu o post 39', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 20:51:36'),
+(262, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 20:51:46'),
+(263, 'Excluiu o post 40', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 21:04:28'),
+(264, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 21:04:46'),
+(265, 'Excluiu o post 41', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 21:05:47'),
+(266, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 21:05:58'),
+(267, 'Excluiu o post 42', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 21:06:44'),
+(268, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 21:06:55'),
+(269, 'Excluiu o post 43', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 21:16:52'),
+(270, 'Excluiu o post 25', 'Delete', 34, 'Ong 1', '00000000000', '28-10-2020 21:17:47'),
+(271, 'Realizou uma postagem', 'post', 34, 'Ong 1', '00000000000', '28-10-2020 21:18:32'),
+(272, 'Saiu do sistema', 'logout', 34, 'Ong 1', '00000000000', '28-10-2020 21:18:59'),
+(273, 'Entrou no sistema', 'login', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 21:19:07'),
+(274, 'Realizou uma postagem', 'post', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 21:20:47'),
+(275, 'Excluiu o post 45', 'Delete', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 21:20:55'),
+(276, 'Favoritou o post 21', 'Favorite', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 21:21:53'),
+(277, 'Saiu do sistema', 'logout', 32, 'Dmitri Ivanovich Mendelev', '00000000000', '28-10-2020 21:22:25'),
+(278, 'Entrou no sistema', 'login', 34, 'Ong 1', '00000000000', '28-10-2020 21:22:38'),
+(279, 'Saiu do sistema', 'logout', 34, 'Ong 1', '00000000000', '28-10-2020 21:23:02');
 
 -- --------------------------------------------------------
 
@@ -251,28 +351,23 @@ INSERT INTO `log` (`id_log`, `description`, `action`, `user_id`, `user_name`, `u
 CREATE TABLE `notify` (
   `id_not` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `id_post` int(11) DEFAULT NULL,
   `name_user` varchar(100) NOT NULL,
   `image_user` varchar(100) NOT NULL,
+  `telephone_user` varchar(30) NOT NULL,
   `type` varchar(2) NOT NULL,
   `title` text NOT NULL,
   `text` text NOT NULL,
-  `created_at` varchar(20) NOT NULL
+  `created_at` varchar(20) NOT NULL,
+  `origin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Despejando dados para a tabela `notify`
 --
 
-INSERT INTO `notify` (`id_not`, `id_user`, `name_user`, `image_user`, `type`, `title`, `text`, `created_at`) VALUES
-(1, 21, 'Diogo Ferreira', 'diogo.png', '4', 'Não compartilhe suas credenciais', 'Lorem ipsum dolor sit amet', 'xxx'),
-(2, 1, 'Pedro Ferreira', 'pedro.png', '1', 'A plataforma está operando normalmente', 'Lorem ipsum dolor sit amet', 'xxx'),
-(3, 21, 'teste', 'eugenio.png', '3', 'tipe 3', 'aaaaaaa', 'xxx'),
-(4, 21, 'cadoni', 'cadoni.png', '2', 'dddddd', 'ddddd', 'xxx'),
-(5, 21, 'aaaa', 'danilo.png', '1', 'aaaaa', 'aaaaa', 'aaa'),
-(6, 21, 'aaaaa', 'eugenio.png', '2', 'aaaaa', 'aaaa', ''),
-(7, 21, 'aaaaaa', 'diogo.png', '3', 'aaaa', 'aaaa', 'aaa'),
-(8, 21, 'aaaaa', 'pedro.png', '4', 'aaa', 'aaaa', 'aaa'),
-(9, 21, 'aaaa', 'diogo.png', '4', 'qqq', 'qqq', 'aaa');
+INSERT INTO `notify` (`id_not`, `id_user`, `id_post`, `name_user`, `image_user`, `telephone_user`, `type`, `title`, `text`, `created_at`, `origin`) VALUES
+(17, 34, 44, 'Ong 1', 'eugenio.png', '19 99999-0000', '3', 'Cachorro precisando de cirurgia torácica', 'Cachorro precisando de cirurgia torácica', '21:18', 0);
 
 -- --------------------------------------------------------
 
@@ -306,7 +401,8 @@ CREATE TABLE `post` (
 INSERT INTO `post` (`id_post`, `id_author`, `cpf_author`, `ranking_author`, `author`, `city_author`, `uf`, `title`, `text`, `telephone`, `email`, `instagram`, `type`, `created_at`, `image`, `image_author`) VALUES
 (21, '32', '00000000000', 1, 'Dmitri Ivanovich Mendelev', 'Mogi Guaçu', 'SP', 'Cachorro com fraturas', 'Teste - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19999990000', 'aaa@aaa.com', '@dhiogo_fer', 3, '27-10-2020 12:42:24', 'dog.jpg', 'eugenio.png'),
 (22, '32', '00000000000', 1, 'Dmitri Ivanovich Mendelev', 'Santa Cruz do Sul', 'SC', 'Cachorros sem ração', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19999990000', 'aaa@aaa.com', '@dhiogo_fer', 2, '27-10-2020 12:43:09', 'dog.jpg', 'eugenio.png'),
-(23, '33', '00000000000', 1, 'Arthur Schopenhauer', 'Mogi Guaçu', 'SP', 'Doação de filhotes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19991621576', 'delete@delete.com', '@dhiogo_fer', 1, '27-10-2020 12:44:58', 'dog.jpg', 'eugenio.png');
+(23, '33', '00000000000', 1, 'Arthur Schopenhauer', 'Mogi Guaçu', 'SP', 'Doação de filhotes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19991621576', 'delete@delete.com', '@dhiogo_fer', 1, '27-10-2020 12:44:58', 'dog.jpg', 'eugenio.png'),
+(44, '34', '00000000000', 2, 'Ong 1', 'Mogi Guaçu', 'SP', 'Cachorro precisando de cirurgia torácica', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '19 99999-0000', 'ong1@ong1.com', '@dhiogo_fer', 3, '28-10-2020 21:18:32', 'dog.jpg', 'eugenio.png');
 
 -- --------------------------------------------------------
 
@@ -344,12 +440,12 @@ INSERT INTO `user` (`id_user`, `ranking`, `name`, `email`, `password`, `cpf`, `t
 (3, 3, 'Pedro Ferreira', 'pedro.ferreira@etec.sp.gov.br', '202cb962ac59075b964b07152d234b70', '00000000000', '0', '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'diogo.png', 'banner3.jpeg', 1, 1),
 (21, 1, 'User', 'sata@sata.com', '202cb962ac59075b964b07152d234b70', '44324268886', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner1.jpeg', 1, 1),
 (32, 1, 'Dmitri Ivanovich Mendelev', 'aaa@aaa.com', '202cb962ac59075b964b07152d234b70', '00000000000', '19999990000', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner2.jpg', 1, 1),
-(33, 1, 'Arthur Schopenhauer', 'delete@delete.com', '202cb962ac59075b964b07152d234b70', '00000000000', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner3.jpeg', 1, 0),
-(34, 2, 'Ong 1', 'ong1@ong1.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
+(33, 1, 'Arthur Schopenhauer', 'delete@delete.com', '202cb962ac59075b964b07152d234b70', '00000000000', '19991621576', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner3.jpeg', 1, 1),
+(34, 2, 'Ong 1', 'ong1@ong1.com', '202cb962ac59075b964b07152d234b70', '00000000000', '19 99999-0000', '@dhiogo_fer', 'Rua Nair de Oliveira Moreno, 78', 'Jardim Veneza', 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'eugenio.png', 'banner2.jpg', 1, 1),
 (35, 2, 'ong 2', 'ong2@ong2.com', '202cb962ac59075b964b07152d234b70', '00000000000', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
 (36, 2, 'ong3', 'ong3@ong3.com', '202cb962ac59075b964b07152d234b70', '44324268886', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
-(37, 2, 'ong4', 'ong4@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 0),
-(38, 2, 'ONG5', 'ong5@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, NULL, NULL, NULL, NULL, NULL, 'Teste', 'avatar.png', 'banner1.jpeg', 1, 0);
+(37, 2, 'ong4', 'ong4@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, '@dhiogo_fer', NULL, NULL, 'Mogi Guaçu', 'SP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'avatar.png', 'banner1.jpeg', 1, 1),
+(38, 2, 'ong 5', 'ong5@gmail.com', '202cb962ac59075b964b07152d234b70', '22222222222', NULL, NULL, NULL, NULL, NULL, NULL, 'Teste', 'avatar.png', 'banner1.jpeg', 1, 1);
 
 --
 -- Índices de tabelas apagadas
@@ -393,25 +489,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id_fav` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_fav` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de tabela `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 
 --
 -- AUTO_INCREMENT de tabela `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `id_not` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_not` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de tabela `user`
