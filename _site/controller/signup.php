@@ -63,7 +63,7 @@ if($array == 0) {
 
 		//Gerando o Log
 	$log_desc = "Cadastrou-se no sistema";
-	$log_action = "signup";
+	$log_action = "Signup";
 
 	$data = new DateTime();
 	$log_created = $data->format('d-m-Y H:i:s');

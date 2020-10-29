@@ -31,6 +31,6 @@ if(($pass1 == $pass2) && ($pass2 == $_SESSION['pass'])){
 	 "<script type='text/javascript'>alert('Poxa... sua conta foi desativada.');</script>";
 
 }else{
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_user/edit/edit_config.php'>" .
+	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/edit/edit_config.php'>" .
 	 "<script type='text/javascript'>alert('Oops... as senhas não coincidem');</script>";	
 }

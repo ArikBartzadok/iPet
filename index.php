@@ -66,7 +66,7 @@ session_start();
         </div>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#about-us" class="nav-link">
               <span class="nav-link-inner--text">Saiba +</span>
             </a>
           </li>
@@ -143,7 +143,7 @@ session_start();
     <!-- End Header -->
     
     <!-- Page content -->
-    <section class="my-5">
+    <section class="my-5" id="about-us">
       <div class="container">
         <div class="row">
           <div class="col-md-8 mx-auto">
@@ -208,7 +208,7 @@ além da capacidade de cadastrar animais que necessitam de um tutor. </p>
               <a href="https://etecmogiguacu.com.br" class="nav-link" target="_blank">Etec</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" target="_blank">Saiba +</a>
+              <a href="#about-us" class="nav-link" target="_blank">Saiba +</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" target="_blank">Contato</a>

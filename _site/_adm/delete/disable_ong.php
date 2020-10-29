@@ -6,18 +6,15 @@ session_start();
 
 $id = $_GET['id'];
 
-$sql = "DELETE FROM post WHERE id_post = '$id'";
+
+$sql = "UPDATE user SET status = 0 WHERE id_user = '$id'";
 $res = mysqli_query($con, $sql);
 
 $auth = mysqli_affected_rows($con);
 
 if($auth != 0){
-	//Excluindo possível notificação
-	$notify = "DELETE FROM notify WHERE id_post = '$id'";
-	$del_notify = mysqli_query($con, $notify);
-	
   //Gerando o Log
-	$log_desc = "Excluiu o post " . $id;
+	$log_desc = $_SESSION['name'] . " desativou a conta: " . $id;
 	$log_action = "Delete";
 	
 	$id = $_SESSION['user_id'];
@@ -30,10 +27,10 @@ if($auth != 0){
 	$log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
 	$exec = mysqli_query($con, $log);		
 
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/list/list_posts.php'>" .
-	 "<script type='text/javascript'>alert('Post deletado com sucesso!');</script>";
+  echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/edit/edit_ongs.php'>" . 
+  "<script type='text/javascript'>alert('ONG desativada.');</script>";	
 
 }else{
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/list/list_posts.php'>" .
-	 "<script type='text/javascript'>alert('Oops... não foi possível deletar este post');</script>";	
+	 echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/edit/edit_ongs.php'>" .
+	  "<script type='text/javascript'>alert('Oops... não foi possível desativar ONG.');</script>";	
 }

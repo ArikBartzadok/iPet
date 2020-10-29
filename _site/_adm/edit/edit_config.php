@@ -1,16 +1,9 @@
-<!--
-=========================================================
-* Edit config
-=========================================================
--
--
--->
 <?php 
 include_once('../../controller/config.php');
 include_once('../../controller/connect.php');
 include_once('../../controller/session.php');
 
-if($_SESSION['rank'] != 1) {
+if($_SESSION['rank'] != 3) {
 	header('location:' . BASE);
 }
 
@@ -57,8 +50,8 @@ if($_SESSION['rank'] != 1) {
               <h6 class="h2 text-white d-inline-block mb-0">iPet</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
-                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>">Home</a></li>
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_adm/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_adm/home.php'; ?>">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Configurações</li>
                 </ol>
               </nav>
@@ -91,7 +84,7 @@ if($_SESSION['rank'] != 1) {
               </div>
             </div>            
             <div class="card-body">
-              <form role="form" method="POST" action="<?= BASE . '_site/_user/delete/delete_account.php';?>">            
+              <form role="form" method="POST" action="<?= BASE . '_site/_adm/delete/delete_account.php';?>">            
                 <h6 class="heading-small text-muted mb-4">Deletar conta</h6>
                 <div class="pl-lg-4">
                   <div class="row">

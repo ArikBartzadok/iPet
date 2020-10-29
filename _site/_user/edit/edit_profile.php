@@ -27,7 +27,7 @@ $rows = mysqli_affected_rows($con);
 if($rows > 0) {
   //Gerando o Log
   $log_desc = "Alterou seus dados pessoais";
-  $log_action = "update";    
+  $log_action = "Update";    
     
   $data = new DateTime();
   $log_created = $data->format('d-m-Y H:i:s');

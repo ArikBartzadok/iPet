@@ -39,16 +39,35 @@ $rows = mysqli_affected_rows($con);
 if($rows > 0) {
   //Gerando o Log
   $log_desc = "Realizou uma postagem";
-  $log_action = "post";    
+  $log_action = "Post";    
 
   $log_created = $data->format('d-m-Y H:i:s');
         
   $log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
   $exec = mysqli_query($con, $log);  
 
-  header('location:' . BASE . '_site/_user/list/list_posts.php');
+  //fazendo a iserção das notificaçõs de acordo com o tipo de postagem (urgente)
+  if($type != 0){
+    $share_post_id = "SELECT id_post FROM post WHERE created_at = '$created_at' AND id_author = '$id'";
+    $share_post = mysqli_query($con, $share_post_id);
+    
+    //Transforma o resultado em um array
+    $array_share_notify = mysqli_fetch_assoc($share_post); 
+    $id_post_notify = $array_share_notify['id_post'];
+
+    $notify_created = $data->format('H:i');
+
+    //definindo a origem desta notificação
+    //0 -> posts, 1 -> admins
+    $origin = 0;
+
+    $notify = "INSERT INTO notify (id_user, id_post, name_user, image_user, telephone_user, type, title, text, created_at, origin) VALUES ('$id', '$id_post_notify', '$name', '$perfil', '$telephone', '$type', '$title', '$title', '$notify_created', '$origin')";    
+    $insert_notify = mysqli_query($con, $notify);     
+  }
+
+  header('location:' . BASE . '_site/_adm/list/list_posts.php');
 } else {
-  echo "<script type='text/javascript'>alert('Oops, não foi possível realizar a postagem!');</script>";   
-  header('location:' . BASE . '_site/_user/upload/upload_post.php');
+  echo "<script type='text/javascript'>alert('Oops... não foi possível realizar a postagem!');</script>";   
+  header('location:' . BASE . '_site/_adm/upload/upload_post.php');
 }
 ?>

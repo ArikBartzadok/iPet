@@ -93,11 +93,11 @@
                               if ($array_notify['type'] == 1){
                                 echo "<span class='badge badge-pill badge-primary'>Info</span>";
                               } elseif ($array_notify['type'] == 2) {
-                                echo "<span class='badge badge-pill badge-success'>Sucesso</span>";
+                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
                               } elseif ($array_notify['type'] == 3) {
                                 echo "<span class='badge badge-pill badge-danger'>Urgente</span>";
                               }else {
-                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
+                                echo "<span class='badge badge-pill badge-success'>Sucesso</span>";
                               }
                              ?>
                              </small>

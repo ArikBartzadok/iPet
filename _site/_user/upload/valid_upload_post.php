@@ -39,7 +39,7 @@ $rows = mysqli_affected_rows($con);
 if($rows > 0) {
   //Gerando o Log
   $log_desc = "Realizou uma postagem";
-  $log_action = "post";    
+  $log_action = "Post";    
 
   $log_created = $data->format('d-m-Y H:i:s');
           

@@ -5,7 +5,7 @@
           <?php if(!isset($_SESSION['filter'])){
             $_SESSION['filter'] = 1;
           }?>
-          <form method="POST" action="<?= BASE . '_site/_user/share/share.php?filter=' . $_SESSION['filter'];?>" class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+          <form method="POST" action="<?= BASE . '_site/_adm/share/share.php?filter=' . $_SESSION['filter'];?>" class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
             <div class="form-group mb-0">
               <div class="input-group input-group-alternative input-group-merge">
                 <div class="input-group-prepend">
@@ -93,11 +93,11 @@
                               if ($array_notify['type'] == 1){
                                 echo "<span class='badge badge-pill badge-primary'>Info</span>";
                               } elseif ($array_notify['type'] == 2) {
-                                echo "<span class='badge badge-pill badge-success'>Sucesso</span>";
+                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
                               } elseif ($array_notify['type'] == 3) {
                                 echo "<span class='badge badge-pill badge-danger'>Urgente</span>";
                               }else {
-                                echo "<span class='badge badge-pill badge-warning'>Aviso</span>";
+                                echo "<span class='badge badge-pill badge-success'>Sucesso</span>";
                               }
                              ?>
                              </small>
@@ -143,11 +143,23 @@
               </a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default  dropdown-menu-right ">
                 <div class="row shortcuts px-4">
-                  <a href="<?= BASE . '_site/_user/list/list_log.php'; ?>" class="col-4 shortcut-item">
+                  <a href="<?= BASE . '_site/_adm/list/list_log.php'; ?>" class="col-4 shortcut-item">
                     <span class="shortcut-media avatar rounded-circle bg-gradient-info">
                       <i class="ni ni-bullet-list-67"></i>
                     </span>
                     <small>Histórico</small>
+                  </a>                  
+                  <a href="<?= BASE . '_site/_adm/edit/edit_notifies.php'; ?>" class="col-4 shortcut-item">
+                    <span class="shortcut-media avatar rounded-circle bg-gradient-warning">
+                      <i class="ni ni-bell-55"></i>
+                    </span>
+                    <small>Notificações</small>
+                  </a>                  
+                  <a href="<?= BASE . '_site/_adm/list/list_all_logs.php'; ?>" class="col-4 shortcut-item">
+                    <span class="shortcut-media avatar rounded-circle bg-gradient-danger">
+                      <i class="ni ni-world-2"></i>
+                    </span>
+                    <small>Atividade</small>
                   </a>                  
                 </div>
               </div>
@@ -169,11 +181,11 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Bem vindo!</h6>
                 </div>
-                <a href="<?= BASE . '_site/_user/profile.php'; ?>" class="dropdown-item">
+                <a href="<?= BASE . '_site/_adm/profile.php'; ?>" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>Meu perfil</span>
                 </a>
-                <a href="<?= BASE . '_site/_user/edit/edit_config.php'; ?>" class="dropdown-item">
+                <a href="<?= BASE . '_site/_adm/edit/edit_config.php'; ?>" class="dropdown-item">
                   <i class="ni ni-settings-gear-65"></i>
                   <span>Configurações</span>
                 </a>                

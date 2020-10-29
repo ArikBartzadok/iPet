@@ -12,7 +12,7 @@
               <a href="https://etecmogiguacu.com.br" class="nav-link" target="_blank">Etec</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" target="_blank">Saiba +</a>
+              <a href="<?= BASE . '#about-us'; ?>" class="nav-link">Saiba +</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" target="_blank">Contato</a>

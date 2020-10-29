@@ -12,7 +12,17 @@ $id = $_SESSION['user_id'];
 $sql = "SELECT * FROM user WHERE id_user = '$id'";
 $res = mysqli_query($con, $sql);
 $array = mysqli_fetch_assoc($res); 
-
+/*
+id_post
+name_user
+image_user
+telephone_user
+type
+title
+text
+created_at
+origin
+*/
 do{  
   $name = $array['name'];
   $email = $array['email'];
@@ -24,10 +34,6 @@ do{
   $image = $array['image'];
 } while($array = mysqli_fetch_assoc($res));
 
-//Fazendo uma busca pela quantidade de posts do usuário
-$sql_count_post = "SELECT * FROM post WHERE id_author = '$id'";
-$res_count_post = mysqli_query($con, $sql_count_post);
-$count_post = mysqli_num_rows($res_count_post); 
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +44,7 @@ $count_post = mysqli_num_rows($res_count_post);
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="desc">
   <meta name="author" content="iPet">
-  <title>iPet | Post</title>
+  <title>iPet | Notify</title>
 
   <!-- Styles -->
   <?php
@@ -73,7 +79,7 @@ $count_post = mysqli_num_rows($res_count_post);
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="<?= BASE . '_site/_adm/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
                   <li class="breadcrumb-item"><a href="<?= BASE . '_site/_adm/home.php'; ?>">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Post's</li>
+                  <li class="breadcrumb-item active" aria-current="page">Criar notificação</li>
                 </ol>
               </nav>
             </div>
@@ -83,8 +89,8 @@ $count_post = mysqli_num_rows($res_count_post);
           </div>          
           <div class="row">
             <div class="col">
-            <h1 class="display-2 text-white">Postagem</h1>
-            <p class="text-white mt-0 mb-5">Realize uma postagem, ajude um pet!</p>
+            <h1 class="display-2 text-white">Notificação</h1>
+            <p class="text-white mt-0 mb-5">Realize a postagem de uma notificação, informe os usuários do iPet!</p>
             </div>
           </div>
         </div>
@@ -100,13 +106,7 @@ $count_post = mysqli_num_rows($res_count_post);
         <div class="col-xl-4 order-xl-2">
           <div class="card card-profile">            
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-              <div class="d-flex justify-content-between">    
-                <a href="../list/list_posts.php">            
-                  <button class="btn btn-icon btn-primary" type="button">
-	                  <span class="btn-inner--icon"><i class="ni ni-settings-gear-65"></i></span>
-                  </button>
-                </a>
-              </div>
+              
             </div>
             <div class="card-body pt-0">              
               <div class="text-center">
@@ -135,8 +135,8 @@ $count_post = mysqli_num_rows($res_count_post);
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center">
                     <div>
-                      <span class="heading"><?= $count_post; ?></span>
-                      <span class="description">Postagens realizadas</span>
+                      <span class="heading"><?= $count_adm_not; ?></span>
+                      <span class="description">Notificações realizadas</span>
                     </div>                    
                   </div>
                 </div>
@@ -149,38 +149,28 @@ $count_post = mysqli_num_rows($res_count_post);
             <div class="card-header">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Escrever postagem</h3>
+                  <h3 class="mb-0">Escrever notificação</h3>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <form role="form" method="POST" action="<?= BASE . '_site/_adm/upload/valid_upload_post.php';?>">
+              <form role="form" method="POST" action="<?= BASE . '_site/_adm/upload/valid_upload_notify.php';?>">
                 <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">Postagem</h6>                
+                <h6 class="heading-small text-muted mb-4">Notificação</h6>                
                 <div class="pl-lg-4">
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-3">
                       <div class="form-group">
                         <label for="exampleFormControlSelect1">Tipo</label>
                         <select name="type" class="form-control" id="exampleFormControlSelect1">
+                          <option value="4">Sucesso</option>
                           <option value="3" selected>Urgente</option>                               
                           <option value="2">Aviso</option>                               
                           <option value="1">Normal</option>                               
                         </select>
                       </div>
                     </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-photo">Foto da postagem</label>
-                        <div class="custom-file">
-                          <input name="pic" type="file" class="custom-file-input" id="customFileLang" lang="pt-br">
-                          <label class="custom-file-label" for="customFileLang"></label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">Títlo</label>
                         <input name="title" type="text" id="input-title" class="form-control" placeholder="Título da postagem" value="" required>
@@ -210,18 +200,24 @@ $count_post = mysqli_num_rows($res_count_post);
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-document">CPF/CNPJ</label>
-                        <input name="document" type="text" id="input-document" class="form-control" placeholder="CPF ou CNPJ" value="<?= $cpf; ?>" required>
+                        <label class="form-control-label" for="input-phone">Telefone</label>
+                        <input name="tel" type="text" id="input-phone" class="form-control" placeholder="Telefone" value="<?= $telephone; ?>" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" required>
                       </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-2">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect1">Imagem de perfil</label>
+                        <label for="exampleFormControlSelect1">Imagem</label>
                         <select name="perfil" class="form-control" id="exampleFormControlSelect1" readonly="readonly">
                           <option value="<?= $image; ?>" selected>Profile image</option>                               
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-document">CPF/CNPJ</label>
+                        <input name="document" type="text" id="input-document" class="form-control" placeholder="CPF ou CNPJ" value="<?= $cpf; ?>" required>
                       </div>
                     </div>
                     <div class="col-lg-2">
@@ -238,72 +234,7 @@ $count_post = mysqli_num_rows($res_count_post);
                     </div>
                   </div>
                 </div>
-                <hr class="my-4" />
-                <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Informações de contato</h6>
-                <div class="pl-lg-4">
-                  <div class="row">
-                    
-                  </div>
-                  <div class="row">                    
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-phone">Telefone</label>
-                        <input name="tel" type="text" id="input-phone" class="form-control" placeholder="Telefone" value="<?= $telephone; ?>" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" required>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-instagram">Instagram</label>
-                        <input name="insta" type="text" id="input-instagram" class="form-control" placeholder="@usuario" value="<?= $instagram; ?>">
-                      </div>
-                    </div>                    
-                  </div>
-                  <div class="row">                    
-                    <div class="col-lg-8">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-city">Cidade</label>
-                        <input name="city" type="text" id="input-city" class="form-control" placeholder="Cidade" value="<?= $city; ?>" required>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-uf">Estado</label>                        
-                        <select name="uf" class="form-control" id="exampleFormControlSelect1">
-                          <option value="<?= $uf; ?>" selected><?= $uf;?></option>                               
-                          <option value="AC">AC</option>
-                          <option value="AL">AL</option>
-                          <option value="AP">AP</option>
-                          <option value="AM">AM</option>
-                          <option value="BA">BA</option>
-                          <option value="CE">CE</option>
-                          <option value="DF">DF</option>
-                          <option value="ES">ES</option>
-                          <option value="GO">GO</option>
-                          <option value="MA">MA</option>
-                          <option value="MT">MT</option>
-                          <option value="MS">MS</option>
-                          <option value="MG">MG</option>
-                          <option value="PA">PA</option>
-                          <option value="PB">PB</option>
-                          <option value="PR">PR</option>
-                          <option value="PE">PE</option>
-                          <option value="PI">PI</option>
-                          <option value="RJ">RJ</option>
-                          <option value="RN">RN</option>
-                          <option value="RS">RS</option>
-                          <option value="RO">RO</option>
-                          <option value="RR">RR</option>
-                          <option value="SC">SC</option>
-                          <option value="SP">SP</option>
-                          <option value="SE">SE</option>
-                          <option value="TO">TO</option>
-                        </select>
-                      </div>
-                    </div>                    
-                  </div>
-                </div>
-                <hr class="my-4" />                                
+                <hr class="my-4" />                
                 <div class="text-center">
                   <button type="submit" class="btn btn-info my-4">Publicar</button>
                 </div>

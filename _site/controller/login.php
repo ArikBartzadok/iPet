@@ -35,7 +35,7 @@ if($auth != 0 && $array['status'] != 0) {
 
 	//Gerando o Log
 	$log_desc = "Entrou no sistema";
-	$log_action = "login";
+	$log_action = "Login";
 
 	$data = new DateTime();
 	$log_created = $data->format('d-m-Y H:i:s');

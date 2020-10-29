@@ -3,7 +3,7 @@ include_once('../../controller/config.php');
 include_once('../../controller/connect.php');
 include_once('../../controller/session.php');
 
-if($_SESSION['rank'] != 1) {
+if($_SESSION['rank'] != 3) {
 	header('location:' . BASE);
 }
 
@@ -66,7 +66,7 @@ if($_SESSION['rank'] != 1) {
             </div>
             <div class="d-flex justify-content-between text-right">
               <div class="col-lg-2 text-right">
-                <i class="fas fa-filter" style="color: #fff"></i>
+                <!-- <i class="fas fa-filter" style="color: #fff"></i> -->
               </div>
               <div class="col-lg-2 text-right">
                     <a href="share.php?filter=1" class="btn btn-sm btn-neutral">Pets</a>              
@@ -159,14 +159,14 @@ if($_SESSION['rank'] != 1) {
                   }elseif ($filter==2) {   
                     $value =  $_SESSION['share'];
                     //Fazendo uma busca pela quantidade de ongs
-                    $sql_num_ongs = "SELECT * FROM user WHERE name LIKE '%$value%' AND ranking = 2 AND status = 1";
+                    $sql_num_ongs = "SELECT * FROM user WHERE name LIKE '%$value%' AND ranking = 2";
                     $res_num_ongs = mysqli_query($con, $sql_num_ongs);
 
                     //Parâmetro inicial do filtro SQL LIMIT
                     $init = ($num_page_itens*$page)-$num_page_itens;
                   
                     //Executando query para seleção de todos os ongs
-                    $sql_ong = "SELECT * FROM user WHERE name LIKE '%$value%' AND ranking = 2 AND status = 1 ORDER BY id_user ASC LIMIT $init, $num_page_itens";
+                    $sql_ong = "SELECT * FROM user WHERE name LIKE '%$value%' AND ranking = 2 ORDER BY id_user ASC LIMIT $init, $num_page_itens";
                     $res_ong = mysqli_query($con, $sql_ong);
             
             		    //Transforma o $resultado em um array
@@ -183,14 +183,14 @@ if($_SESSION['rank'] != 1) {
                   }else{
                     $value =  $_SESSION['share'];
                     //Fazendo uma busca pela quantidade de users
-                    $sql_num_users = "SELECT * FROM user WHERE name LIKE '%$value%' AND ranking = 1 AND status = 1";
+                    $sql_num_users = "SELECT * FROM user WHERE name LIKE '%$value%' AND ranking = 1";
                     $res_num_users = mysqli_query($con, $sql_num_users);
 
                     //Parâmetro inicial do filtro SQL LIMIT
                     $init = ($num_page_itens*$page)-$num_page_itens;
                   
                     //Executando query para seleção de todos os users
-                    $sql_user = "SELECT * FROM user WHERE name LIKE '%$value%'  AND ranking = 1 AND status = 1 ORDER BY id_user DESC LIMIT $init, $num_page_itens";
+                    $sql_user = "SELECT * FROM user WHERE name LIKE '%$value%'  AND ranking = 1 ORDER BY id_user DESC LIMIT $init, $num_page_itens";
                     $res_user = mysqli_query($con, $sql_user);
             
             		    //Transforma o $resultado em um array
@@ -214,13 +214,13 @@ if($_SESSION['rank'] != 1) {
                 <div>                                    
                   <table class="table align-items-center">
                     <thead class="thead-light">
-                      <tr>
+                      <tr>                        
                         <th scope="col" class="sort" data-sort="name">Título</th>
                         <th scope="col" class="sort" data-sort="budget">Ajudar</th>
                         <th scope="col" class="sort" data-sort="status">Descrição</th>                        
                         <th scope="col" class="sort" data-sort="completion">Author</th>
                         <th scope="col">Data</th>
-                        <!-- <th scope="col"></th> -->
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody class="list">  
@@ -300,18 +300,18 @@ if($_SESSION['rank'] != 1) {
                           <span class="status"><?= date_format($date, 'd/m') . " às " . date_format($date, 'H:i'); ?></span>
                         </span>
                       </td>
-                      <!-- <td class="text-right">
+                      <td class="text-right">
                         <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                          <?php                                                    
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/delete/adm_remove_post.php?id=" . $array_pet['id_post'] . "'>Deletar</a>";                        
+                          ?>                            
                           </div>
                         </div>
-                      </td> -->
+                      </td>
                     </tr>  
                     <!-- Start notification Danger -->             
         <div class="modal fade" id="modal-notification-danger<?= $array_pet['id_post']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
@@ -492,7 +492,7 @@ if($_SESSION['rank'] != 1) {
                         <th scope="col" class="sort" data-sort="status">Contatar</th>                        
                         <th scope="col" class="sort" data-sort="completion">Bio</th>
                         <th scope="col">Cidade - UF</th>
-                        <!-- <th scope="col"></th> -->
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody class="list">  
@@ -511,7 +511,13 @@ if($_SESSION['rank'] != 1) {
                             </a>                      
                           </div>    
                           <div class="media-body">
-                            <span class="name mb-0 text-sm"><?= $array_ong['name']; ?></span>
+                            <span class="name mb-0 text<?php
+                            if($array_ong['status'] == 0){
+                              echo "-danger";
+                            }else{
+                              echo "";
+                            }                      
+                            ?>"><?= $array_ong['name']; ?></span>
                           </div>
                         </div>
                       </th>
@@ -545,22 +551,35 @@ if($_SESSION['rank'] != 1) {
                       </td>
                       <td>
                         <span class="badge badge-dot mr-4">                        
-                          <i class="bg-info"></i>
+                          <i class="<?php
+                            if($array_ong['status'] == 0){
+                              echo "bg-danger";
+                            }else{
+                              echo "bg-success";
+                            }                      
+                            ?>"></i>
                           <span class="status"><?= $array_ong['city'] . ", " . $array_ong['uf'];?></span>
                         </span>
                       </td>
-                      <!-- <td class="text-right">
+                      <td class="text-right">
                         <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                          <?php
+                          $filter_user = $array_ong['id_user'];
+
+                          if($array_ong['status'] == 0){
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/delete/enable_ong.php?id=" . $filter_user . "'>Ativar</a>";
+                          }else{
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/delete/disable_ong.php?id=" . $filter_user ."'>Desativar</a>";                            
+                          }                                                                                                        
+                          
+                          ?>                            
                           </div>
                         </div>
-                      </td> -->
+                      </td>
                     </tr>                     
                     <?php
                     //fim do loop
@@ -637,7 +656,7 @@ if($_SESSION['rank'] != 1) {
                         <th scope="col" class="sort" data-sort="status">Contatar</th>                        
                         <th scope="col" class="sort" data-sort="completion">Bio</th>
                         <th scope="col">Cidade - UF</th>
-                        <!-- <th scope="col"></th> -->
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody class="list">  
@@ -656,7 +675,13 @@ if($_SESSION['rank'] != 1) {
                             </a>                      
                           </div>    
                           <div class="media-body">
-                            <span class="name mb-0 text-sm"><?= $array_user['name']; ?></span>
+                            <span class="name mb-0 text<?php
+                            if($array_user['status'] == 0){
+                              echo "-danger";
+                            }else{
+                              echo "";
+                            }                      
+                            ?>"><?= $array_user['name']; ?></span>
                           </div>
                         </div>
                       </th>
@@ -690,22 +715,39 @@ if($_SESSION['rank'] != 1) {
                       </td>
                       <td>
                         <span class="badge badge-dot mr-4">                        
-                          <i class="bg-info"></i>
+                          <i class="<?php
+                            if($array_user['status'] == 0){
+                              echo "bg-danger";
+                            }else{
+                              echo "bg-success";
+                            }                      
+                            ?>"></i>
                           <span class="status"><?= $array_user['city'] . ", " . $array_user['uf'];?></span>
                         </span>
                       </td>
-                      <!-- <td class="text-right">
+                      <td class="text-right">
                         <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </div>
-                      </td> -->
+                          <?php
+                          $filter_user = $array_user['id_user'];
+
+                          if($array_user['status'] == 0){
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/delete/enable_user.php?id=" . $filter_user . "'>Ativar</a>";
+                          }else{
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/delete/disable_user.php?id=" . $filter_user ."'>Desativar</a>";                            
+                          }                          
+                                                    
+                          if($array_user['ranking'] == 1){
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/edit/edit_adm_set.php?id=" . $filter_user . "'>Tornar ADM</a>";
+                          }
+                          else{
+                            echo "<a class='dropdown-item' href='" . BASE . "_site/_adm/edit/edit_adm_unset.php?id=" . $filter_user ."'>Desativar ADM</a>";                            
+                          }
+                          
+                          ?>
                     </tr>     
                     <?php
                     //fim do loop

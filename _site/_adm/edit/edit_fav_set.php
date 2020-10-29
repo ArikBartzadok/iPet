@@ -34,10 +34,10 @@ if($auth != 0){
 	$log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
 	$exec = mysqli_query($con, $log);		
 
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_user/list/list_favs.php'>" .
+	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/list/list_favs.php'>" .
 	 "<script type='text/javascript'>alert('Post favoritado');</script>";
 
 }else{
-	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_user/list/list_pets.php'>" .
+	echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=" . BASE . "_site/_adm/list/list_pets.php'>" .
 	 "<script type='text/javascript'>alert('Oops... post não favoritado');</script>";	
 }

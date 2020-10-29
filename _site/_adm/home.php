@@ -3,7 +3,7 @@ include_once('../controller/config.php');
 include_once('../controller/connect.php');
 include_once('../controller/session.php');
 
-if($_SESSION['rank'] != 1) {
+if($_SESSION['rank'] != 3) {
 	header('location:' . BASE);
 }
 ?>
@@ -16,7 +16,7 @@ if($_SESSION['rank'] != 1) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="desc">
   <meta name="author" content="iPet">
-  <title>iPet | User</title>
+  <title>iPet | ADM</title>
 
   <!-- Styles -->
   <?php

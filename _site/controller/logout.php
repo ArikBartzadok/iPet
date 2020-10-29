@@ -7,7 +7,7 @@ include ('connect.php');
 
 		//Gerando o Log
 		$log_desc = "Saiu do sistema";
-		$log_action = "logout";
+		$log_action = "Logout";
 	
 		$id = $_SESSION['user_id'];
 		$name = $_SESSION['name'];

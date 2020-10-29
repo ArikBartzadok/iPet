@@ -143,7 +143,7 @@
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
 	                  <span class="btn-inner--icon">
-                      <?= "<a href='" . BASE . "_site/_user/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
+                      <?= "<a href='" . BASE . "_site/_adm/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
                     </span>
                   </button>                
                 </div>                

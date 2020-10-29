@@ -23,9 +23,9 @@
             </div>
           </div>
         </div>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto">        
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= BASE . '#about-us';?>" class="nav-link">
               <span class="nav-link-inner--text">Saiba +</span>
             </a>
           </li>

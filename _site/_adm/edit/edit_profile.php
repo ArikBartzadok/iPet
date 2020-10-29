@@ -27,7 +27,7 @@ $rows = mysqli_affected_rows($con);
 if($rows > 0) {
   //Gerando o Log
   $log_desc = "Alterou seus dados pessoais";
-  $log_action = "update";    
+  $log_action = "Update";    
     
   $data = new DateTime();
   $log_created = $data->format('d-m-Y H:i:s');
@@ -35,9 +35,9 @@ if($rows > 0) {
   $log = "INSERT INTO log (description, action, user_id, user_name, user_doc, created_at) VALUES ('$log_desc', '$log_action', '$id', '$name', '$document', '$log_created')";
   $exec = mysqli_query($con, $log);  
 
-  header('location:' . BASE . '_site/_user/profile.php');
+  header('location:' . BASE . '_site/_adm/profile.php');
 } else {
   //echo "<script type='text/javascript'>alert('Oops, não foi possível realizar as alterações!');</script>";   
-  header('location:' . BASE . '_site/_user/profile.php');
+  header('location:' . BASE . '_site/_adm/profile.php');
 }
 ?>

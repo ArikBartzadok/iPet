@@ -3,7 +3,7 @@ include_once('../../controller/config.php');
 include_once('../../controller/connect.php');
 include_once('../../controller/session.php');
 
-if($_SESSION['rank'] != 1) {
+if($_SESSION['rank'] != 3) {
 	header('location:' . BASE);
 }
 ?>
@@ -49,8 +49,8 @@ if($_SESSION['rank'] != 1) {
               <h6 class="h2 text-white d-inline-block mb-0">iPet</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
-                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_user/home.php'; ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= BASE . '_site/_adm/home.php'; ?>"><i class="fas fa-home"></i></a></li>                  
+                  <li class="breadcrumb-item"><a href="<?= BASE . '_site/_adm/home.php'; ?>">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Posts</li>
                 </ol>
               </nav>
@@ -215,7 +215,7 @@ if($_SESSION['rank'] != 1) {
               <div class="row justify-content-center">
                 <div class="col col-lg-3 order-lg-2">
                   <button class="btn btn-icon btn-secondary" type="button">
-                  <?= "<a href='" . BASE . "_site/_user/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
+                  <?= "<a href='" . BASE . "_site/_adm/edit/edit_fav_set.php?id=" . $array_post['id_post'] . "' ><span class='btn-inner--icon'><i class='ni ni-favourite-28' style='color: #dee2e6;'></i></span></a>";?>                      
                   </button>                
                 </div>
                 <div class="col col-lg-3 order-lg-2">
@@ -392,7 +392,7 @@ if($_SESSION['rank'] != 1) {
                   <div class="card-header bg-transparent pb-5">
                     <div class="text-muted text-center mt-2 mb-3"><small>Gerenciar</small></div>        
                     <div class="btn-wrapper text-center">
-                      <a href="<?= BASE . '_site/_user/delete/delete_post.php?id=' . $array_post['id_post'];?>">                             
+                      <a href="<?= BASE . '_site/_adm/delete/delete_post.php?id=' . $array_post['id_post'];?>">                             
                         <button class="btn btn-icon btn-danger" type="button">	                        
                           <span class="btn-inner--text">Deletar</span>
                         </button>   

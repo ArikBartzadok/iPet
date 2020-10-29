@@ -2,7 +2,7 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="<?= BASE . '_site/_user/home.php';?>">
+        <a class="navbar-brand" href="<?= BASE . '_site/_adm/home.php';?>">
           <img src="<?= PUBLICO . 'img/brand/ipet-blue.png'; ?>" class="navbar-brand-img" alt="...">
           
         </a>
@@ -16,25 +16,25 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="<?= BASE . '_site/_user/home.php';?>">
+              <a class="nav-link active" href="<?= BASE . '_site/_adm/home.php';?>">
                 <i class="ni ni-tv-2 text-default"></i>
                 <span class="nav-link-text">Home</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_pets.php';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/list/list_pets.php';?>">
                 <i class="ni ni-tag text-info"></i>
                 <span class="nav-link-text">Pets</span>
               </a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_ongs.php';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/list/list_ongs.php';?>">
                 <i class="ni ni-badge text-primary"></i>
                 <span class="nav-link-text">ONGs</span>
               </a>
             </li>            
             <li class="nav-item">
-              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_users.php';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/list/list_users.php';?>">
                 <i class="ni ni-single-02 text-yellow"></i>
                 <span class="nav-link-text">Usuários</span>
               </a>
@@ -46,7 +46,7 @@
             $res_count_favorite = mysqli_query($con, $sql_count_favorite);
             $count_favorite = mysqli_num_rows($res_count_favorite); 
             ?>
-              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_favs.php';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/list/list_favs.php';?>">
                 <i class="ni ni-favourite-28 text-danger"></i>
                 <span class="nav-link-text">Pets salvos</span>
                 <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $count_favorite;?></span>
@@ -57,12 +57,52 @@
           <hr class="my-3">
           <!-- Heading -->
           <h6 class="navbar-heading p-0 text-muted">
+            <span class="docs-normal">Administrativo</span>
+          </h6>
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/edit/edit_users.php';?>">
+                <i class="ni ni-single-02 text-info"></i>
+                <span class="nav-link-text">Users</span>
+              </a>
+            </li>                                                       
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/edit/edit_ongs.php';?>">
+                <i class="ni ni-badge text-primary"></i>
+                <span class="nav-link-text">ONGs</span>
+              </a>
+            </li>                                                       
+            <li class="nav-item">
+            <?php
+            //Fazendo uma busca pela quantidade de posts do usuário
+            $sql_count_adm = "SELECT * FROM user WHERE ranking = 3";
+            $res_count_adm = mysqli_query($con, $sql_count_adm);
+            $count_adm = mysqli_num_rows($res_count_adm); 
+            ?>
+              <a class="nav-link" href="<?= BASE . '_site/_adm/edit/edit_admins.php';?>">
+                <i class="ni ni-support-16 text-danger"></i>
+                <span class="nav-link-text">ADMs</span>
+                <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $count_adm;?></span>
+              </a>
+            </li>                                                       
+            <li class="nav-item">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/edit/edit_posts.php';?>">
+                <i class="ni ni-single-copy-04 text-default"></i>
+                <span class="nav-link-text">Posts</span>
+              </a>
+            </li>                                                                   
+          </ul>
+          <!-- Divider -->
+          <hr class="my-3">
+          <!-- Heading -->
+          <h6 class="navbar-heading p-0 text-muted">
             <span class="docs-normal">Mais ações</span>
           </h6>
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="<?= BASE . '_site/_user/upload/upload_post.php';?>">
+              <a class="nav-link active" href="<?= BASE . '_site/_adm/upload/upload_post.php';?>">
                 <i class="ni ni-single-copy-04 text-info"></i>
                 <span class="nav-link-text">Realizar Post</span>
               </a>
@@ -74,10 +114,23 @@
             $res_count_post = mysqli_query($con, $sql_count_post);
             $count_post = mysqli_num_rows($res_count_post); 
             ?>
-              <a class="nav-link" href="<?= BASE . '_site/_user/list/list_posts.php';?>">
+              <a class="nav-link" href="<?= BASE . '_site/_adm/list/list_posts.php';?>">
                 <i class="ni ni-collection text-default"></i>
                 <span class="nav-link-text">Meus Post's</span>
                 <span class="badge badge-md badge-circle badge-floating badge-info border-white"><?= $count_post;?></span>
+              </a>
+            </li> 
+            <li class="nav-item">
+            <?php
+            //Fazendo uma busca pela quantidade de posts do usuário
+            $sql_count_adm_not = "SELECT * FROM notify WHERE id_user = '$id'";
+            $res_count_adm_not = mysqli_query($con, $sql_count_adm_not);
+            $count_adm_not = mysqli_num_rows($res_count_adm_not); 
+            ?>
+              <a class="nav-link" href="<?= BASE . '_site/_adm/upload/upload_notify.php';?>">
+                <i class="ni ni-notification-70 text-yellow"></i>
+                <span class="nav-link-text">Criar notificação</span>
+                <span class="badge badge-md badge-circle badge-floating badge-warning border-white"><?= $count_adm_not;?></span>
               </a>
             </li>                                             
           </ul>

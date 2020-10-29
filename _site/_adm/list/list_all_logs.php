@@ -52,7 +52,7 @@ if($_SESSION['rank'] != 3) {
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>                  
                   <li class="breadcrumb-item"><a href="../home.php">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Logs</li>
+                  <li class="breadcrumb-item active" aria-current="page">Logs Globais</li>
                 </ol>
               </nav>
             </div>
@@ -62,8 +62,8 @@ if($_SESSION['rank'] != 3) {
           </div>          
           <div class="row">
             <div class="col">
-            <h1 class="display-2 text-white">Lista de logs</h1>
-            <p class="text-white mt-0 mb-5">Esta é sua página de registro de atividades. Aqui você pode consultar todas as ações realizadas por sua conta.</p>
+            <h1 class="display-2 text-white">Logs globais</h1>
+            <p class="text-white mt-0 mb-5">Esta é sua página de registro de atividades globais, de todos os usuários do sistema iPet. Aqui você pode consultar todas as ações realizadas por cada um dos mesmos.</p>
             </div>
           </div>
         </div>
@@ -89,21 +89,21 @@ if($_SESSION['rank'] != 3) {
                 <div>                                    
                 <?php
                   //Número de resultados a serem exibidos por vez
-                  $num_page_itens = 10;
+                  $num_page_itens = 50;
 
                   //pegando a página atual                  
                   $page = (isset($_GET['page']))? $_GET['page'] : 1;
 
                   //Fazendo uma busca pela quantidade de logs deste usuário
                   $id = $_SESSION['user_id'];
-                  $sql_num_log = "SELECT * FROM log WHERE user_id = '$id'";
+                  $sql_num_log = "SELECT * FROM log";
                   $res_num_log = mysqli_query($con, $sql_num_log);
 
                   //Parâmetro inicial do filtro SQL LIMIT
                   $init = ($num_page_itens*$page)-$num_page_itens;
                   
                   //Executando query para seleção de todos os logs deste usuário
-                  $sql_log = "SELECT * FROM log WHERE user_id = '$id' ORDER BY id_log DESC LIMIT $init, $num_page_itens";
+                  $sql_log = "SELECT * FROM log ORDER BY id_log DESC LIMIT $init, $num_page_itens";
                   $res_log = mysqli_query($con, $sql_log);
             
             		  //Transforma o $resultado em um array
@@ -118,8 +118,7 @@ if($_SESSION['rank'] != 3) {
                   //Total de páginas -> $num_pages;                  
                   //Total de registros -> $quanty_logs;
 
-                  //Definindo a imagem de perfil deste usuário
-                  $profile_image =  $_SESSION['profile_image'];                                     
+                  //Definindo a imagem de perfil deste usuário                  
                 ?>
                   <table class="table align-items-center">
                     <thead class="thead-light">
@@ -139,12 +138,7 @@ if($_SESSION['rank'] != 3) {
                     ?>              
                     <tr>
                       <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="avatar-group">
-                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="<?= $array_log['user_name']; ?>">
-                              <img alt="Image placeholder" src="<?= PUBLICO . 'img/users/' . $profile_image; ?>">
-                            </a>                      
-                          </div>    
+                        <div class="media align-items-center">                              
                           <div class="media-body">
                             <span class="name mb-0 text-sm"><?= $array_log['user_name']; ?></span>
                           </div>
@@ -156,12 +150,25 @@ if($_SESSION['rank'] != 3) {
                       <td>
                       <?= $array_log['description']; ?>
                       </td>
-                      <td>                        
-                      <?= $array_log['created_at']; ?>
+                      <td>  
+                      <?php
+                      $date = date_create($array_log['created_at']);
+                      ?>                      
+                      <?= date_format($date, 'd/m') . " às " . date_format($date, 'H:i'); ?>
                       </td>
                       <td>
                         <span class="badge badge-dot mr-4">
-                          <i class="bg-info"></i>
+                          <i class="<?php
+                            if(($array_log['action'] == "Activate") || ($array_log['action'] == "Signup") || ($array_log['action'] == "Login")){
+                              echo "bg-success";
+                            }elseif(($array_log['action'] == "Update") || ($array_log['action'] == "Delete") || ($array_log['action'] == "Logout")){
+                              echo "bg-warning";
+                            }elseif(($array_log['action'] == "Promoção")){
+                              echo "bg-danger";
+                            }else{
+                              echo "bg-secondary";
+                            }                      
+                            ?>"></i>
                           <span class="status"><?= $array_log['id_log']; ?></span>
                         </span>
                       </td>
@@ -189,7 +196,7 @@ if($_SESSION['rank'] != 3) {
               <nav aria-label="...">
                     <ul class="pagination">
                       <li class="page-item">
-                        <a class="page-link" href="list_log.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
+                        <a class="page-link" href="list_all_logs.php?page=<?php if($page==1){ echo 1;}else{echo $page-1;};?>" tabindex="-1">
                           <i class="fa fa-angle-left"></i>
                           <span class="sr-only">Anterior</span>
                         </a>
@@ -203,10 +210,10 @@ if($_SESSION['rank'] != 3) {
                             $current = "active";
                           }
                       ?>
-                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_log.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                      <li class="page-item <?= $current; ?>"><a class="page-link" href="list_all_logs.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                       <?php }?>
                       <li class="page-item">
-                        <a class="page-link" href="list_log.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
+                        <a class="page-link" href="list_all_logs.php?page=<?php if($page<$num_pages){ echo $page+1;}else{echo $page;};?>">
                           <i class="fa fa-angle-right"></i>
                           <span class="sr-only">Próximo</span>
                         </a>

@@ -1,37 +1,9 @@
-<!--
-=========================================================
-* USER Profile
-=========================================================
-
-id_user
-ranking
-name
-email
-password
-cpf
-telephone
-instagram
-street
-neighborhood
-city
-uf
-bio
-image
-banner
-use_terms
-status (0 = inativo | 1 = ativo)
-
-A fazer:
--
--
--
--->
 <?php 
 include_once('../controller/config.php');
 include_once('../controller/connect.php');
 include_once('../controller/session.php');
 
-if($_SESSION['rank'] != 1) {
+if($_SESSION['rank'] != 3) {
 	header('location:' . BASE);
 }
 
@@ -194,7 +166,7 @@ $count_post = mysqli_num_rows($res_count_post);
               </div>
             </div>
             <div class="card-body">
-              <form role="form" method="POST" action="<?= BASE . '_site/_user/edit/edit_profile.php';?>">
+              <form role="form" method="POST" action="<?= BASE . '_site/_adm/edit/edit_profile.php';?>">
                 <h6 class="heading-small text-muted mb-4">Dados de usuário</h6>
                 <div class="pl-lg-4">
                   <div class="row">
