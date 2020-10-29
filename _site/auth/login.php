@@ -118,7 +118,7 @@ include_once('../controller/config.php');
           </div>
           <div class="row mt-3">
             <div class="col-6">
-              <a href="#" class=""><small>Esqueceu sua senha?</small></a>
+              <a href="resset_password.php" class=""><small>Esqueceu sua senha?</small></a>
             </div>
             <div class="col-6 text-right">
               <a href="<?= BASE . '_site/auth/signup.php'; ?>" class=""><small>Criar uma conta</small></a>
