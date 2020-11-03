@@ -9,6 +9,8 @@ type	created_at	image	image_author
 include_once ('../../controller/connect.php');
 include_once ('../../controller/config.php');
 
+require('../../controller/wideimage/WideImage.php');
+
 $id = filter_input(INPUT_POST, "user_id");
 $document = filter_input(INPUT_POST, "document");
 $ranking = filter_input(INPUT_POST, "ranking");
@@ -24,14 +26,33 @@ $type = filter_input(INPUT_POST, "type");
 //created_at
 $data = new DateTime();
 $created_at = $data->format('d-m-Y H:i:s');
-$pic = filter_input(INPUT_POST, "pic");
 $perfil = filter_input(INPUT_POST, "perfil");
 
+if($_FILES['pic']['size'] > 0){
+  $ext = strtolower(substr($_FILES['pic']['name'],-4)); //Pegando extensão do arquivo
+  $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+  //$dir = chmod("../../assets/img/users/", 0755); //Diretório para uploads
+  $dir = '../../assets/img/posts/'; //Diretório para uploads
 
-$pic = "dog.jpg";
+  move_uploaded_file($_FILES['pic']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+
+  $image = $new_name;   
+  
+  // Carrega a imagem a ser manipulada
+  $crop_image = WideImage::load('../../assets/img/posts/' . $image);
+
+  //Cortando a imagem a partir de seu exato centro
+  $cropped = $crop_image->crop('center', 'center', 500, 300);
+
+  //Salvando a imagem já recortada
+  $cropped->saveToFile('../../assets/img/posts/' . $image);
+
+}else{
+  $image = "dog.jpg";
+}
 
 //Fazendo a inserção dos dados no banco de dados
-$sql = "INSERT INTO post (id_author, cpf_author, ranking_author, author, city_author, uf, title, text, telephone, email, instagram, type, created_at, image,	image_author) VALUES ('$id', '$document', $ranking, '$name', '$city', '$uf', '$title', '$text', '$telephone', '$email', '$instagram', $type, '$created_at', '$pic', '$perfil')";
+$sql = "INSERT INTO post (id_author, cpf_author, ranking_author, author, city_author, uf, title, text, telephone, email, instagram, type, created_at, image,	image_author) VALUES ('$id', '$document', $ranking, '$name', '$city', '$uf', '$title', '$text', '$telephone', '$email', '$instagram', $type, '$created_at', '$image', '$perfil')";
 $res = mysqli_query($con, $sql);
 $rows = mysqli_affected_rows($con);
 

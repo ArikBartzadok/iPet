@@ -194,7 +194,7 @@ $count_post = mysqli_num_rows($res_count_post);
               </div>
             </div>
             <div class="card-body">
-              <form role="form" method="POST" action="<?= BASE . '_site/_user/edit/edit_profile.php';?>">
+              <form role="form" method="POST" action="<?= BASE . '_site/_user/edit/edit_profile.php';?>" enctype="multipart/form-data">
                 <h6 class="heading-small text-muted mb-4">Dados de usuário</h6>
                 <div class="pl-lg-4">
                   <div class="row">
@@ -339,12 +339,13 @@ $count_post = mysqli_num_rows($res_count_post);
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <div class="form-group">
+                    <div class="form-group">
                         <label class="form-control-label" for="input-photo">Foto de perfil</label>
                         <div class="custom-file">
-                          <input name="pic" type="file" class="custom-file-input" id="customFileLang" lang="pt-br">
+                          <input type="file" name="pic" class="custom-file-input" id="customFileLang" lang="pt-br" accept="image/png, image/jpg">
                           <label class="custom-file-label" for="customFileLang"></label>
                         </div>
+                        <small><span class="text-muted"><span class="text-danger">* </span>Apenas <span class="text-success font-weight-700">.png e .jpg</span></span></small>
                       </div>
                     </div>
                   </div>

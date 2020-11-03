@@ -14,6 +14,6 @@
         unset($_SESSION['pass']);
         unset($_SESSION['name']);
         unset($_SESSION['rank']);
-        header('location:http://localhost/tcc_ipet/');
+        header('location:' . BASE);
     }
 ?>
